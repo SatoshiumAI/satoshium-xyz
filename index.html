@@ -1,0 +1,488 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Satoshium — Knowledge Layer</title>
+<style>
+:root{
+ --card-wm: url('/assets/seal.png');
+ --bg:#07090d;
+ --panel:#0c1018;
+ --text:#e8edf7;
+ --muted:#9aa7bd;
+ --gold:#d6a34a;
+ --gold2:#f4c36a;
+ --line:rgba(214,163,74,.18);
+}
+*{box-sizing:border-box}
+html,body{
+  margin:0;
+  padding:0;
+  background:var(--bg);
+  color:var(--text);
+  font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+  line-height:1.55
+}
+body{
+ padding-top:80px;
+}
+.reflection{
+ margin-top:40px;
+ margin-bottom:40px;
+ color:var(--muted);
+}
+a{color:var(--gold2);text-decoration:none}
+a:hover{color:var(--gold)}
+.wrap{max-width:1080px;margin:0 auto;padding:0 18px}
+.content{padding:34px 18px 60px}
+h1,h2,h3{margin:0 0 10px}
+h1{font-size:34px;color:var(--gold2);line-height:1.15}
+h2{font-size:22px;color:var(--gold2);margin-top:0}
+h3{font-size:15px;color:var(--text)}
+p,li{color:var(--text)}
+hr{border:none;border-top:1px solid var(--line);margin:22px 0}
+
+.hero{
+  position:relative;
+  overflow:hidden;
+  border:1px solid var(--line);
+  border-radius:20px;
+  padding:28px 22px;
+  margin-bottom:18px;
+  background:
+    radial-gradient(circle at top right, rgba(214,163,74,.10), transparent 28%),
+    linear-gradient(to bottom right, rgba(12,16,24,.96), rgba(12,16,24,.90));
+  box-shadow:0 0 0 1px rgba(214,163,74,.08),0 20px 50px rgba(0,0,0,.45);
+}
+.hero::before{
+  content:"";
+  position:absolute;
+  inset:-80px;
+  background-image:var(--card-wm);
+  background-repeat:no-repeat;
+  background-size:min(860px,72vw);
+  background-position:right -180px center;
+  opacity:.035;
+  filter:blur(1px);
+  pointer-events:none;
+  z-index:0;
+}
+.hero > *{position:relative;z-index:1}
+
+.card{
+  position:relative;
+  overflow:hidden;
+  background:linear-gradient(to bottom right,rgba(12,16,24,.94),rgba(12,16,24,.88));
+  border:1px solid var(--line);
+  border-radius:16px;
+  padding:16px 16px;
+  margin:16px 0;
+  box-shadow:0 0 0 1px rgba(214,163,74,.08),0 20px 50px rgba(0,0,0,.45);
+  transition:transform .18s ease, box-shadow .18s ease;
+}
+.card::before{
+  content:"";
+  position:absolute;
+  inset:-60px;
+  background-image:var(--card-wm);
+  background-repeat:no-repeat;
+  background-size:min(720px,70vw);
+  background-position:right -140px center;
+  opacity:0.028;
+  filter:blur(1px);
+  pointer-events:none;
+  z-index:0;
+}
+.card > *{position:relative;z-index:1}
+.card:hover{
+  transform:translateY(-3px);
+  box-shadow:0 10px 25px rgba(0,0,0,.35);
+}
+.card{
+  border:1px solid rgba(214,163,74,.15);
+}
+
+.muted{color:var(--muted)}
+.pill{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:8px 10px;
+  border:1px solid var(--line);
+  border-radius:999px;
+  background:rgba(214,163,74,.08);
+  color:var(--gold2);
+  font-size:12px;
+  font-weight:700
+}
+.pill-link{
+  display:inline-flex;
+  margin-right:8px;
+  margin-bottom:10px
+}
+.hero-actions{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-top:18px
+}
+.grid-2{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:16px
+}
+.grid-3{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:16px
+}
+ 
+.note{
+  margin-top:10px;
+  padding:12px 14px;
+  border:1px solid var(--line);
+  border-radius:12px;
+  background:rgba(214,163,74,.05);
+  color:var(--muted);
+  font-size:14px;
+}
+.statline{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-top:14px;
+}
+.stat{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:8px 10px;
+  border:1px solid var(--line);
+  border-radius:999px;
+  background:rgba(214,163,74,.06);
+  color:var(--text);
+  font-size:12px;
+}
+.mini{font-size:13px}
+ul{margin:8px 0 0 18px}
+
+@media (max-width:900px){
+  .grid-3{grid-template-columns:1fr}
+}
+@media (max-width:760px){
+  .grid-2{grid-template-columns:1fr}
+  h1{font-size:30px}
+}
+</style>
+</head>
+<body id="top">
+<div id="topbar-container"></div>
+<script>
+fetch("/topbar.html")
+  .then(response => response.text())
+  .then(data => {
+    document.getElementById("topbar-container").innerHTML = data;
+
+    const path = window.location.pathname.toLowerCase();
+
+    function setActive(key){
+      const el = document.querySelector(`.topbar .nav a[data-nav="${key}"]`);
+      if (el) el.classList.add("active");
+    }
+
+    if (path.includes("/workspace/debug/")) setActive("debug");
+    else if (path.includes("/workspace/repos/")) setActive("repos");
+    else if (path.includes("/workspace/ui/")) setActive("ui");
+    else if (path.includes("/workspace/architecture/")) setActive("architecture");
+    else if (path.includes("/workspace/temp/")) setActive("temp");
+    else if (path.includes("/workspace/")) setActive("workspace");
+    else setActive("home");
+  });
+</script>
+
+<main class="wrap content">
+
+<section class="hero">
+  <div class="pill">🌐 Satoshium Info • Knowledge Layer</div>
+
+  <h1 style="margin-top:14px;">The public knowledge and engineering layer of Satoshium.</h1>
+
+  <p class="muted" style="max-width:900px;">
+    Satoshium Info is the documentation, architecture, and development intelligence surface of the Satoshium ecosystem.
+    It exists to make the project understandable, navigable, and durable — not just for today’s build cycle,
+    but for the long arc of what Satoshium could become by 2035 and beyond.
+  </p>
+
+  <p class="muted" style="max-width:900px;">
+    If Satoshium AI becomes the public-facing platform, then Satoshium Info becomes the place where structure is preserved,
+    systems are mapped, work is organized, and the deeper logic of the ecosystem remains visible over time.
+  </p>
+
+  <div class="hero-actions">
+    <a class="pill pill-link" href="/workspace/">Open Workspace</a>
+    <a class="pill pill-link" href="/workspace/architecture/">View Architecture</a>
+    <a class="pill pill-link" href="/workspace/repos/">Explore Repos</a>
+  </div>
+
+  <div class="statline">
+    <span class="stat">🧠 Documentation Layer</span>
+    <span class="stat">🏛️ Architectural Memory</span>
+    <span class="stat">🔧 Public Engineering Surface</span>
+    <span class="stat">📚 Long-Horizon Reference</span>
+  </div>
+</section>
+
+<div class="grid-2">
+
+  <div class="card">
+    <h2>Why Satoshium Info Exists</h2>
+    <p class="muted">
+      Complex systems fail when their structure becomes invisible. Satoshium Info exists to prevent that.
+      It gives the ecosystem a place to preserve its architecture, document its growth, and maintain
+      continuity between experiments, repositories, interfaces, and future public systems.
+    </p>
+    <div class="note">
+      This domain is not just a workspace. It is the emerging memory layer of Satoshium.
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>The 2035 Role</h2>
+    <p class="muted">
+      By 2035, this site could serve as the canonical reference layer for Satoshium’s public architecture —
+      a place where builders, contributors, observers, and future systems can understand how the ecosystem fits together,
+      what each layer does, and how the project evolved over time.
+    </p>
+    <div class="note">
+      In that future, Satoshium Info becomes less like a website and more like a living systems archive.
+    </div>
+  </div>
+
+</div>
+
+<div class="card">
+  <h2>What This Site Can Grow Into</h2>
+  <div class="grid-3">
+
+    <div>
+      <h3>📚 Documentation Hub</h3>
+      <p class="muted mini">
+        A central place for definitions, technical notes, canonical structures, operating principles,
+        and internal explanations across the Satoshium ecosystem.
+      </p>
+    </div>
+
+    <div>
+      <h3>🗺️ Ecosystem Map</h3>
+      <p class="muted mini">
+        A public map of domains, repositories, services, agents, modules, and experiments —
+        showing how all major pieces connect over time.
+      </p>
+    </div>
+
+    <div>
+      <h3>🏛️ Architectural Archive</h3>
+      <p class="muted mini">
+        A preserved record of design choices, domain roles, build phases, and structural reasoning,
+        so future growth does not lose its original logic.
+      </p>
+    </div>
+
+    <div>
+      <h3>🔧 Engineering Surface</h3>
+      <p class="muted mini">
+        A visible place for ongoing work: debugging, page refinement, repo organization,
+        design iteration, and active systems planning.
+      </p>
+    </div>
+
+    <div>
+      <h3>🧠 AI Collaboration Layer</h3>
+      <p class="muted mini">
+        A practical environment where screenshots, working notes, references, and structured sections
+        support AI-assisted development without friction.
+      </p>
+    </div>
+
+    <div>
+      <h3>📈 Institutional Memory</h3>
+      <p class="muted mini">
+        A long-horizon layer that helps the project remain coherent as it expands across years,
+        tools, domains, repos, public products, and contributor participation.
+      </p>
+    </div>
+
+  </div>
+</div>
+
+<div class="card">
+  <h2>The Satoshium Domain Architecture</h2>
+  <p class="muted">
+    Satoshium Info is one layer within a broader multi-domain ecosystem. Each domain has a distinct role,
+    allowing the project to separate public presence, experiments, infrastructure, knowledge, and commerce.
+  </p>
+
+  <ul>
+    <li><strong>satoshium.ai</strong> — public-facing platform and primary brand surface</li>
+    <li><strong>satoshium.info</strong> — knowledge layer, documentation hub, and public engineering surface</li>
+    <li><strong>satoshium.xyz</strong> — experimental systems, agent testing, and frontier concepts</li>
+    <li><strong>satoshium.net</strong> — network, infrastructure, and future node-oriented visibility</li>
+    <li><strong>satoshium.store</strong> — merchandise and economic/brand layer</li>
+  </ul>
+
+  <div class="note">
+    Together, these domains form a layered architecture rather than a single flat website.
+  </div>
+</div>
+
+<div class="grid-2">
+
+  <div class="card">
+    <h2>Current Workspace Functions</h2>
+    <p class="muted">
+      Today, Satoshium Info already includes a structured workspace for active development.
+      That workspace gives each major kind of work its own home.
+    </p>
+    <ul>
+      <li><strong>Debug</strong> — visual troubleshooting and asset/path fixes</li>
+      <li><strong>Repos</strong> — repository structures and ecosystem organization</li>
+      <li><strong>UI</strong> — interface patterns, design experiments, and polish</li>
+      <li><strong>Architecture</strong> — domain maps, systems planning, and layered thinking</li>
+      <li><strong>Temp</strong> — short-term staging area for active sessions</li>
+    </ul>
+    <p><a href="/workspace/">Enter Workspace →</a></p>
+  </div>
+
+  <div class="card">
+    <h2>Likely Future Sections</h2>
+    <p class="muted">
+      Within reason, this site could gradually expand to include additional knowledge and development layers
+      as the ecosystem matures.
+    </p>
+    <ul>
+      <li>Canonical definitions</li>
+      <li>System timelines and milestone history</li>
+      <li>Public changelogs and development logs</li>
+      <li>Agent catalogs and module registries</li>
+      <li>Design system references</li>
+      <li>Service maps and ecosystem diagrams</li>
+      <li>Research notes and essays</li>
+      <li>Developer onboarding references</li>
+    </ul>
+  </div>
+
+</div>
+
+<div class="card">
+  <h2>Possible Future Layers</h2>
+  <p class="muted">
+    As Satoshium Info matures, this domain can expand beyond today’s workspace and become a broader
+    reference surface for the entire ecosystem. These are plausible future layers that could be added
+    over time without changing the core purpose of the site.
+  </p>
+
+  <div class="grid-3">
+
+    <div>
+      <h3>📖 Canon / Definitions</h3>
+      <p class="muted mini">
+        A stable reference layer for core Satoshium terms, principles, and canonical concepts so the
+        ecosystem retains shared meaning as it grows.
+      </p>
+    </div>
+
+    <div>
+      <h3>🕰️ Timeline / Evolution</h3>
+      <p class="muted mini">
+        A structured historical layer showing major milestones, domain launches, repository phases,
+        public updates, and key architectural shifts over time.
+      </p>
+    </div>
+
+    <div>
+      <h3>🗂️ Registry / Systems Index</h3>
+      <p class="muted mini">
+        A navigable directory of systems, modules, agents, interfaces, repos, and services that gives
+        visitors a clear map of what exists inside the ecosystem.
+      </p>
+    </div>
+
+    <div>
+      <h3>🧪 Research / Essays</h3>
+      <p class="muted mini">
+        A place for longer-form thinking: architectural essays, research notes, system reflections,
+        future-use cases, and strategic writing connected to the Satoshium vision.
+      </p>
+    </div>
+
+    <div>
+      <h3>🛠️ Developer Onboarding</h3>
+      <p class="muted mini">
+        A practical entry point for future contributors, with explanations of structure, naming patterns,
+        workflows, standards, and how to understand the ecosystem without overwhelm.
+      </p>
+    </div>
+
+    <div>
+      <h3>📰 Public Build Logs</h3>
+      <p class="muted mini">
+        A transparent record of visible progress — not just polished outputs, but the build process itself:
+        iterations, experiments, refinements, and long-horizon development in motion.
+      </p>
+    </div>
+
+  </div>
+
+  <div class="note">
+    These layers do not all need to exist now. The purpose of listing them is to show how
+    satoshium.info can grow into a durable systems-intelligence domain by 2035.
+  </div>
+</div>
+
+ 
+<div class="card">
+  <h2>A Big-Picture View of 2035</h2>
+  <p class="muted">
+    In the long run, Satoshium Info could become the place where the project explains itself to the world:
+    not through hype, but through clarity. A future visitor might come here not only to inspect the structure
+    of Satoshium, but to understand how decentralized intelligence, cryptographic rules, documented systems,
+    and long-horizon design came together in one coherent ecosystem.
+  </p>
+
+  <p class="muted">
+    That is the larger role of this site. It is where the project learns to remember itself.
+  </p>
+</div>
+
+<div class="card">
+  <h2>Current Status</h2>
+  <p class="muted">
+    Satoshium Info is now live as an independent domain and has begun establishing its initial workspace,
+    structure, and identity. The foundation is in place. Over time, this site can evolve from a practical
+    development surface into a durable knowledge and architecture layer for the broader Satoshium project.
+  </p>
+</div>
+
+</main>
+
+<div class="wrap reflection">
+<hr />
+<div id="random-saying" class="muted" style="margin-bottom:14px; max-width:760px;">
+  Satoshium is being built slowly, in public, and with architectural discipline.
+</div>
+<hr />
+
+<div id="footer-container"></div>
+
+<script src="/assets/sayings.js"></script>
+<script>
+fetch("/footer.html")
+ .then(response => response.text())
+ .then(data => {
+   document.getElementById("footer-container").innerHTML = data;
+ });
+</script>
+</div>
+</body>
+</html>

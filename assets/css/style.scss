@@ -1,0 +1,40 @@
+---
+---
+
+@import "{{ site.theme }}";
+
+:root{
+  --bg:#07090d;
+  --panel:#0c1018;
+  --text:#e8edf7;
+  --muted:#9aa7bd;
+  --gold:#d6a34a;
+  --gold2:#f4c36a;
+  --line:rgba(214,163,74,.18);
+}
+
+body{
+  background: var(--bg) !important;
+  color: var(--text) !important;
+}
+
+a{ color: var(--gold2) !important; }
+a:hover{ color: var(--gold) !important; }
+
+.site-header, .site-footer{
+  background: rgba(7,9,13,.92) !important;
+  border-color: var(--line) !important;
+}
+
+.page-content{
+  background: transparent !important;
+}
+
+h1,h2,h3{
+  color: var(--gold2) !important;
+}
+
+hr{
+  border-top: 1px solid var(--line) !important;
+}
+

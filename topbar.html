@@ -1,0 +1,120 @@
+<!-- topbar.html | Satoshium Info (Global Topbar) -->
+<style>
+:root{
+ --card-wm: url('/satoshium-info/assets/seal.png');
+ --bg:#07090d;
+ --panel:#0c1018;
+ --text:#e8edf7;
+ --muted:#9aa7bd;
+ --gold:#d6a34a;
+ --gold2:#f4c36a;
+ --line:rgba(214,163,74,.18);
+}
+
+*{box-sizing:border-box}
+
+a{color:var(--gold2);text-decoration:none}
+a:hover{color:var(--gold)}
+
+.wrap{
+ max-width:980px;
+ margin:0 auto;
+ padding:0 18px;
+}
+
+/* ===== Fixed Top Navigation ===== */
+
+.topbar{
+ position:fixed;
+ top:0;
+ left:0;
+ width:100%;
+ z-index:1000;
+ background:rgba(7,9,13,.92);
+ border-bottom:1px solid var(--line);
+ backdrop-filter: blur(8px);
+}
+
+.topbar .wrap{
+ display:flex;
+ align-items:center;
+ justify-content:space-between;
+ padding:14px 0;
+}
+
+.brand{
+ display:flex;
+ align-items:center;
+ gap:12px;
+}
+
+.mark{
+ width:42px;
+ height:42px;
+ border-radius:14px;
+ display:grid;
+ place-items:center;
+ background:linear-gradient(180deg, rgba(214,163,74,.22), rgba(214,163,74,.05));
+ border:1px solid var(--line);
+ color:var(--gold2);
+ font-weight:900;
+}
+
+.name{
+ letter-spacing:.16em;
+ font-weight:800;
+ font-size:12px;
+ color:var(--gold2);
+}
+
+.tag{
+ font-size:12px;
+ color:var(--muted);
+ margin-top:2px;
+}
+
+.nav{
+ display:flex;
+ gap:16px;
+ align-items:center;
+ flex-wrap:wrap;
+}
+
+.nav a{
+ color:var(--muted);
+ font-size:13px;
+}
+
+.nav a:hover{
+ color:var(--gold2);
+}
+
+.nav a.active{
+ color:var(--gold2);
+ font-weight:600;
+}
+</style>
+
+<header class="topbar" aria-label="Satoshium global topbar">
+  <div class="wrap">
+    <div class="brand">
+      <div class="mark">S</div>
+      <div>
+        <div class="name">SATOSHIUM</div>
+        <div class="tag">AI, governed by Bitcoin</div>
+      </div>
+    </div>
+
+    <nav class="nav" aria-label="Primary navigation">
+      <a href="https://satoshiumai.github.io/satoshium-info/" data-nav="home">Home</a>
+      <a href="https://satoshiumai.github.io/satoshium-info/workspace/" data-nav="workspace">Workspace</a>
+      <a href="https://satoshiumai.github.io/satoshium-info/workspace/debug/" data-nav="debug">Debug</a>
+      <a href="https://satoshiumai.github.io/satoshium-info/workspace/repos/" data-nav="repos">Repos</a>
+      <a href="https://satoshiumai.github.io/satoshium-info/workspace/ui/" data-nav="ui">UI</a>
+      <a href="https://satoshiumai.github.io/satoshium-info/workspace/architecture/" data-nav="architecture">Architecture</a>
+      <a href="https://satoshiumai.github.io/satoshium-info/workspace/temp/" data-nav="temp">Temp</a>
+      <a href="https://github.com/satoshiumai/satoshium-info" target="_blank" rel="noopener" data-nav="github">GitHub</a>
+      <a href="https://satoshium.ai" target="_blank" rel="noopener" data-nav="mainsite">Main Site</a>
+    </nav>
+  </div>
+</header>
