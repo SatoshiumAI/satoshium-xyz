@@ -1,152 +1,150 @@
-# 🧠 Satoshium Workspace
+# 🪐 Satoshium — XYZ
 
-Welcome to the **Satoshium Workspace** — the collaborative environment where the Satoshium ecosystem is designed, tested, and refined.
+Satoshium.xyz is the experimental layer of the Satoshium ecosystem. This domain exists to explore ideas before they become permanent infrastructure.
 
-This repository powers **https://satoshium.info**, a workspace and documentation hub used during the development of the Satoshium platform.
+Here, new interfaces, agents, simulations, and experimental systems can be built, tested, refined, and sometimes discarded — allowing the broader Satoshium platform to evolve without risking stability in the core layers.
 
-While **satoshium.ai** serves as the public-facing platform, **satoshium.info** acts as the internal engineering and experimentation workspace supporting the broader project.
+This repository is part of the **Satoshium platform**, an experimental system exploring how decentralized intelligence, AI agents, and cryptographic infrastructure can evolve together over long time horizons.
 
 ---
 
-# 🌐 The Satoshium Domain Ecosystem
+# 🌐 The Satoshium Universe
 
-Satoshium uses multiple domains to separate functional layers of the project:
+Satoshium is expanding into a **layered domain ecosystem** where each domain serves a distinct role.
 
-| Domain | Purpose |
+| Domain | Role |
 |------|------|
-| **satoshium.ai** | Main Satoshium platform |
-| **satoshium.info** | Development workspace and documentation hub |
-| **satoshium.net** | Network infrastructure and node ecosystem |
-| **satoshium.xyz** | Experimental systems and agent testing |
-| **satoshium.store** | Merchandise and economic layer |
+| **satoshium.ai** | Public platform layer |
+| **satoshium.info** | Knowledge & engineering layer |
+| **satoshium.xyz** | Experimental frontier |
+| **satoshium.net** | Infrastructure & network layer |
+| **satoshium.store** | Cultural & merchandise layer |
+| **satoshium.link** | Gateway & shared components |
+| **satoshium.dev** | Developer ecosystem (planned) |
+| **satoshium.us** | Jurisdictional / operational layer (planned) |
 
-This layered domain architecture allows the Satoshium ecosystem to scale over time while maintaining clear separation between systems.
-
----
-
-# ⚙️ Purpose of This Repository
-
-The **satoshium-info** repository exists to provide a lightweight workspace for:
-
-- Development collaboration
-- Debugging and troubleshooting
-- UI experimentation
-- Architecture documentation
-- Repository structure visualization
-- Temporary development assets
-
-It also serves as a **visual workspace** when collaborating with AI systems during development.
+Together these domains form the **Satoshium Universe**.
 
 ---
 
-# 🧩 Workspace Structure
+# 🧭 Role of This Repository
 
-```
-satoshium-info
-│
-├── index.html
-│
-├── workspace
-│    ├── index.html
-│    ├── debug
-│    ├── repos
-│    ├── ui
-│    ├── architecture
-│    └── temp
-│
-├── assets
-│    ├── css
-│    └── img
-│
-└── README.md
-```
+This repository supports the **[layer / system]** of the Satoshium platform.
+
+Its responsibilities may include:
+
+- [primary responsibility]
+- [secondary responsibility]
+- [supporting systems]
+- [documentation / infrastructure / experimentation]
+
+Each repository exists to support **structured growth of the ecosystem**, not isolated projects.
 
 ---
 
-# 🧪 Workspace Sections
+# 🧠 Platform Layers
 
-### 🔧 Debug
-Screenshots and visual debugging resources used to troubleshoot UI and layout issues.
+Satoshium architecture generally follows several conceptual layers.
 
-### 📦 Repositories
-Visual references and diagrams for Satoshium repository structures.
+| Layer | Purpose |
+|------|------|
+| **Trust Layer** | Verification, safety, and governance logic |
+| **Knowledge Layer** | Documentation, terminology, and structured knowledge |
+| **Intelligence Layer** | Agents, reasoning systems, and coordination |
+| **Simulation Layer** | Experimental modeling environments |
+| **Interface Layer** | Public platform and application surfaces |
 
-### 🎨 UI
-Interface experiments and design explorations for Satoshium applications.
+This repository primarily contributes to the:
 
-### 🏛 Architecture
-Diagrams and documentation describing the architecture of the Satoshium ecosystem.
-
-### 📂 Temp
-Temporary assets and development resources used during active work sessions.
-
----
-
-# 🤖 AI Collaboration Environment
-
-This workspace is intentionally structured to support **AI-assisted development**.
-
-Screenshots, code snippets, and diagrams can be uploaded here and referenced during collaborative sessions with AI tools.
-
-Example workflow:
-
-```
-https://satoshium.info/workspace/debug/layout-issue.png
-```
-
-This allows rapid troubleshooting and development without file upload limitations.
+**➡ [Insert layer here]**
 
 ---
 
-# 🚀 About Satoshium
+# ⚙ Shared Platform Components
 
-**Satoshium** is a decentralized intelligence infrastructure built on the Bitcoin standard.
+Many Satoshium domains use shared components hosted through:
 
-The project explores how cryptographic trust systems and AI agents can interact within transparent, verifiable environments.
+https://satoshium.link
 
----
+Shared UI infrastructure may include:
 
-# 📜 License
+/components/topbar.html
+/components/footer.html
+/components/domain-layers.html
 
-This project is licensed under the MIT License.
 
----
-
-# 🧭 Project Status
-
-Satoshium is an evolving research and development initiative.  
-This workspace will continue to expand as the ecosystem grows.
-
-```
+These components help maintain consistent navigation and architecture visibility across the Satoshium ecosystem.
 
 ---
 
-## After you paste this
-Commit it to:
+# 🧩 Relationship to Other Repositories
 
-```
-main
-```
+This repository interacts with several other Satoshium repositories.
 
-or
+Examples may include:
 
-```
-phase004
-```
+- **satoshium-core** — shared platform logic
+- **satoshium-specs** — architecture definitions
+- **satoshium-progress** — public build documentation
+- **satoshium-simulations** — experimental modeling environments
+- **satoshium-demos** — prototype demonstrations
+- **satoshium-registry** — system indexing and structure
 
-(depending on where you're hosting GitHub Pages).
+Repositories within the ecosystem function as **coordinated modules rather than isolated projects**.
 
 ---
 
-## Next step (recommended)
-After the README, we should create:
+# 🚧 Development Status
 
-```
-workspace/index.html
-```
+Satoshium repositories are under **active long-horizon development**.
 
-which becomes the **main navigation hub** for the workspace.
+Some repositories may contain:
 
-Then the five section pages.
+- working systems
+- experimental prototypes
+- early architectural structures
+- documentation in progress
+- conceptual groundwork
 
-I can generate **all 6 HTML files in one step** so you can paste them in and have the entire workspace functioning in about **5 minutes**.
+Tools and modules may evolve significantly over time.
+
+---
+
+# 📚 Philosophy
+
+Satoshium is being built:
+
+- slowly  
+- transparently  
+- with architectural discipline  
+
+The goal is not rapid hype-driven development, but **durable systems thinking over decades**.
+
+---
+
+# 🔗 Explore the Ecosystem
+
+- https://satoshium.ai  
+- https://satoshium.info  
+- https://satoshium.xyz  
+- https://satoshium.net  
+- https://satoshium.store  
+- https://satoshium.link  
+
+---
+
+# 🧠 Satoshium
+
+**AI governed by Bitcoin.**
+
+Satoshium explores how decentralized intelligence systems can be built using:
+
+- cryptographic rules
+- transparent architecture
+- open documentation
+- long-horizon design
+
+---
+
+© Satoshium  
+Experimental platform under active development.<img width="647" height="2725" alt="image" src="https://github.com/user-attachments/assets/62b23334-251c-431c-8c04-73c56d585a13" />
