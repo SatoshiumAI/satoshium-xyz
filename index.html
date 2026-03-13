@@ -7,7 +7,7 @@
 
 <style>
 :root{
- --card-wm: url('/assets/seal.png');
+ --card-wm: url('https://satoshium.link/assets/seal.png');
  --bg:#07090d;
  --panel:#0c1018;
  --text:#e8edf7;
@@ -179,7 +179,7 @@ ul{margin:8px 0 0 18px}
 <body id="top">
 <div id="topbar-container"></div>
 <script>
-fetch("/topbar.html")
+fetch("https://satoshium.link/components/topbar.html")
   .then(response => response.text())
   .then(data => {
     document.getElementById("topbar-container").innerHTML = data;
@@ -199,7 +199,7 @@ fetch("/topbar.html")
 <body id="top">
 <div id="topbar-container"></div>
 <script>
-fetch("/topbar.html")
+fetch("https://satoshium.link/components/topbar.html")
   .then(response => response.text())
   .then(data => {
     document.getElementById("topbar-container").innerHTML = data;
@@ -243,6 +243,16 @@ to evolve without risking stability in the core layers.
 
 <div class="grid-2">
 
+<div id="domain-layers"></div>
+
+<script>
+fetch("https://satoshium.link/components/domain-layers.html")
+  .then(r => r.text())
+  .then(data => {
+    document.getElementById("domain-layers").innerHTML = data;
+  });
+</script>
+ 
 <div class="card">
 <h2>Why This Domain Exists</h2>
 
@@ -352,9 +362,9 @@ systems that explore the future of decentralized intelligence.
 
 <div id="footer-container"></div>
 
-<script src="/assets/sayings.js"></script>
+<script src="https://satoshium.link/assets/sayings.js"></script>
 <script>
-fetch("/footer.html")
+fetch("https://satoshium.link/components/footer.html")
  .then(response => response.text())
  .then(data => {
    document.getElementById("footer-container").innerHTML = data;
