@@ -199,24 +199,6 @@ fetch("https://satoshium.link/components/topbar.html")
   });
 </script>
 
-</head>
-<body id="top">
-<div id="topbar-container"></div>
-<script>
-fetch("https://satoshium.link/components/topbar.html")
-  .then(response => response.text())
-  .then(data => {
-    document.getElementById("topbar-container").innerHTML = data;
-
-    function setActive(key){
-      const el = document.querySelector(`.topbar .nav a[data-nav="${key}"]`);
-      if (el) el.classList.add("active");
-    }
-
-    setActive("xyz");
-  });
-</script>
-
 <main class="wrap content">
 
 <section class="hero">
