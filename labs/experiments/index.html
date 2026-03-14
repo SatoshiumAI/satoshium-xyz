@@ -442,14 +442,18 @@ Some modules are internal prototypes, others are released here as public test en
   </section>
             <!-- Footer mission statement + links -->
       <hr />
+<div class="wrap reflection">
+<hr />
 <div id="random-saying" class="muted" style="margin-bottom:14px; max-width:760px;">
   Satoshium is being built slowly, in public, and with architectural discipline.
 </div>
 <hr />
+
 <div id="footer-container"></div>
+
 <script src="https://satoshium.link/assets/sayings.js"></script>
 <script>
-fetch("https://satoshium.link/footer.html")
+fetch("https://satoshium.link/components/footer.html")
  .then(response => response.text())
  .then(data => {
  document.getElementById("footer-container").innerHTML = data;
