@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<title>Satoshium Labs</title>
+
+<style>
+
+:root{
+  --card-wm: url('https://satoshium.link/assets/seal.png');
+  --bg:#07090d;
+  --panel:#0c1018;
+  --text:#e8edf7;
+  --muted:#9aa7bd;
+  --gold:#d6a34a;
+  --gold2:#f4c36a;
+  --line:rgba(214,163,74,.18);
+}
+
+*{box-sizing:border-box}
+
+html,body{
+  margin:0;
+  padding:0;
+  background:var(--bg);
+  color:var(--text);
+  font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+}
+body{
+ padding-top:80px;
+}
+.wrap{
+  max-width:980px;
+  margin:0 auto;
+  padding:0 18px;
+}
+
+.content{
+  padding:40px 0 60px;
+}
+
+h1{
+  font-size:30px;
+  color:var(--gold2);
+  margin-bottom:10px;
+}
+
+h2{
+  font-size:20px;
+  color:var(--gold2);
+}
+
+.muted{
+  color:var(--muted);
+}
+
+.pill{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:8px 10px;
+  border:1px solid var(--line);
+  border-radius:999px;
+  background:rgba(214,163,74,.08);
+  color:var(--gold2);
+  font-size:12px;
+  font-weight:700;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:22px;
+  margin-top:28px;
+}
+
+.reflection{
+ margin-top:40px;
+ margin-bottom:40px;
+ color:var(--muted);
+}
+  
+.card{
+  position:relative;
+  overflow:hidden;
+
+  background:linear-gradient(
+    to bottom right,
+    rgba(12,16,24,.94),
+    rgba(12,16,24,.88)
+  );
+
+  border:1px solid var(--line);
+  border-radius:16px;
+
+  padding:22px;
+
+  box-shadow:
+  0 0 0 1px rgba(214,163,74,.08),
+  0 20px 50px rgba(0,0,0,.45);
+
+  transition:transform .15s ease, box-shadow .15s ease;
+}
+
+.card:hover{
+  transform:translateY(-4px);
+  box-shadow:
+  0 0 0 1px rgba(214,163,74,.12),
+  0 24px 60px rgba(0,0,0,.55);
+}
+
+.card::before{
+  content:"";
+  position:absolute;
+  inset:-60px;
+
+  background-image:var(--card-wm);
+  background-repeat:no-repeat;
+  background-size:min(720px,70vw);
+  background-position:right -140px center;
+
+  opacity:0.03;
+  filter:blur(1px);
+
+  pointer-events:none;
+}
+
+.card h2{
+  margin-top:0;
+}
+
+.card p{
+  color:var(--muted);
+}
+
+.card a{
+  display:inline-block;
+  margin-top:12px;
+  font-size:13px;
+  color:var(--gold2);
+}
+
+.card a:hover{
+  color:var(--gold);
+}
+
+</style>
+</head>
+
+<body id="top">
+  
+<div id="topbar-slot"></div>
+<script src="https://satoshium.link/components/topbar-loader.js"></script>
+  
+<main class="wrap content">
+
+<div class="pill">Satoshium Labs</div>
+
+<h1>Satoshium Labs</h1>
+
+<p class="muted">
+Satoshium Labs contains interactive tools, experimental interfaces, and prototype systems
+used to explore decentralized intelligence, AI governance, and long-horizon infrastructure models.
+</p>
+
+<div class="grid">
+
+<div class="card" style="--card-wm:url('https://satoshium.link/assets/seal.png');">
+
+<h2>Live Demos</h2>
+
+<p>
+Public tools and working demonstrations of Satoshium software components.
+These interfaces allow visitors to interact directly with experimental AI systems.
+</p>
+
+<a href="./demos/" class="pill">
+Open Demos →
+</a>
+
+</div>
+
+
+<div class="card" style="--card-wm:url('https://satoshium.link/assets/seal.png');">
+
+<h2>Experiments</h2>
+
+<p>
+Early-stage modules and research interfaces used to test new concepts
+in sovereign infrastructure, intelligence systems, and governance models.
+</p>
+
+<a href="./experiments/" class="pill">
+Open Experiments →
+</a>
+
+</div>
+
+<div class="card">
+
+<h2 style="margin-top:0;">Research &amp; Papers</h2>
+
+<p>
+Long-form essays, architecture notes, and future whitepapers exploring
+decentralized intelligence, verification systems, governance models,
+and Bitcoin-aligned AI infrastructure.
+</p>
+
+<p>
+These research materials support the deeper thinking behind Satoshium’s
+systems, experiments, and long-horizon platform architecture.
+</p>
+
+<p>
+<a href="./research/" class="pill">
+Open Research →
+</a>
+</p>
+
+</div>
+  
+</main>
+
+
+<p>
+  <div class="wrap reflection">
+<hr />
+<div id="random-saying" class="muted" style="margin-bottom:14px; max-width:760px;">
+  Satoshium is being built slowly, in public, and with architectural discipline.
+</div>
+<hr />
+
+<div id="footer-container"></div>
+
+<script src="https://satoshium.link/assets/sayings.js"></script>
+<script>
+fetch("https://satoshium.link/components/footer.html")
+ .then(response => response.text())
+ .then(data => {
+ document.getElementById("footer-container").innerHTML = data;
+ });
+</script>
+</body>
+</html>
