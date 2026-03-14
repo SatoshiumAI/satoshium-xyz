@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Satoshium — Demos</title>
+
+<style>
+
+/* ===== Core Theme ===== */
+
+:root{
+ --card-wm: url('https://satoshium.link/assets/seal.png');
+ --bg:#07090d;
+ --panel:#0c1018;
+ --text:#e8edf7;
+ --muted:#9aa7bd;
+ --gold:#d6a34a;
+ --gold2:#f4c36a;
+ --line:rgba(214,163,74,.18);
+}
+
+*{box-sizing:border-box}
+
+html,body{
+margin:0;
+padding:0;
+background:var(--bg);
+color:var(--text);
+font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+line-height:1.55
+}
+body{
+ padding-top:80px;
+}
+a{color:var(--gold2);text-decoration:none}
+a:hover{color:var(--gold)}
+
+.wrap{max-width:980px;margin:0 auto;padding:0 18px}
+
+/* ===== Layout ===== */
+
+.content{
+padding:34px 18px 60px
+}
+
+h1,h2{
+margin:0 0 10px
+}
+
+h1{
+font-size:30px;
+color:var(--gold2)
+}
+
+h2{
+font-size:20px;
+color:var(--gold2);
+margin-top:26px
+}
+
+p,li{
+color:var(--text)
+}
+
+hr{
+border:none;
+border-top:1px solid var(--line);
+margin:22px 0
+}
+
+/* ===== Cards ===== */
+
+.card{
+position: relative;
+overflow: hidden;
+
+background: linear-gradient(
+to bottom right,
+rgba(12,16,24,.94),
+rgba(12,16,24,.88)
+);
+
+border:1px solid var(--line);
+border-radius:16px;
+
+padding:16px 16px;
+margin:16px 0;
+
+box-shadow:
+0 0 0 1px rgba(214,163,74,.08),
+0 20px 50px rgba(0,0,0,.45);
+}
+
+.card::before{
+content:"";
+position:absolute;
+inset:-60px;
+background-image: var(--card-wm);
+background-repeat:no-repeat;
+background-size: min(720px, 70vw);
+background-position: right -140px center;
+opacity:0.028;
+filter: blur(1px);
+pointer-events:none;
+z-index:0;
+}
+
+.card > *{
+position:relative;
+z-index:1
+}
+.card {
+  transition: transform .18s ease, box-shadow .18s ease;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(0,0,0,.35);
+}
+
+.card {
+ border: 1px solid rgba(214,163,74,.15);
+}
+
+.muted{
+color:var(--muted)
+}
+
+.footer{
+border-top:1px solid var(--line);
+padding:18px 0 32px;
+color:var(--muted)
+}
+
+/* ===== Pills ===== */
+
+.pill{
+display:inline-flex;
+align-items:center;
+gap:8px;
+padding:8px 10px;
+border:1px solid var(--line);
+border-radius:999px;
+background:rgba(214,163,74,.08);
+color:var(--gold2);
+font-size:12px;
+font-weight:700
+}
+
+ul{
+margin:8px 0 0 18px
+}
+
+</style>
+</head>
+
+<body id="top">
+
+<div id="topbar-slot"></div>
+<script src="https://satoshium.link/components/topbar-loader.js"></script>
+  
+<main class="wrap content">
+
+  <div class="pill">🧪 Satoshium Labs</div>
+
+  <h1 style="margin-top:12px;">Live Demos & Experiments</h1>
+  <p class="muted">
+    This page lists what you can try right now, and what’s coming next.
+    Satoshium ships tools publicly — one visible step at a time.
+  </p>
+
+  <!-- AI CHAT -->
+  <div class="card" style="--card-wm:url('https://satoshium.link/assets/seal.png');">
+    <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;">
+      <h2 style="margin-top:0;">Satoshium Hub Chat</h2>
+      <span class="badge live">✅ LIVE</span>
+    </div>
+
+    <p class="muted" style="margin:8px 0 10px;">
+      Interact with the Satoshium intelligence layer.
+    </p>
+
+    <div class="btnrow">
+      <a class="btn" href="https://satoshiumai.github.io/satoshium-progress/labs/demos/ai-chat.html" target="_blank" rel="noreferrer">Launch Satoshium AI</a> 
+    </div>
+  </div>
+
+  <!-- EXPERIMENTS -->
+  <div class="card" style="--card-wm:url('https://satoshium.link/assets/seal.png');">
+    <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;">
+      <h2 style="margin-top:0;">Satoshium Experiments</h2>
+      <span class="badge">🧪 WORK IN PROGRESS</span>
+    </div>
+
+    <p class="muted" style="margin:8px 0 10px;">
+      Experimental modules and prototypes — early demonstrations of sovereign intelligence tools.
+    </p>
+
+    <div class="btnrow">
+      <a class="btn" href="./experiments/" target="_blank" rel="noreferrer">Launch Satoshium Experiments</a>
+    </div>
+  </div>
+
+  <!-- PLANNED -->
+  <div class="card" style="--card-wm:url('https://satoshium.link/assets/seal.png');">
+    <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;">
+      <h2 style="margin-top:0;">Planned Experiments (Tier 1 • 2026)</h2>
+      <span class="badge">🧭 PROGRESS (NO DEADLINES)</span>
+    </div>
+
+    <p class="muted" style="margin:8px 0 10px;">
+      These are the next public-facing tools planned for 2026, shipped in logical order.
+      Everything releases only when it’s ready — calm, steady, and verifiable.
+    </p>
+
+    <ul>
+      <li><strong>Prompt Wizard</strong> — helps visitors ask better questions using structured prompts <span class="muted">(Apr • when ready)</span></li>
+      <li><strong>Onboarding Mentor</strong> — a guided “start here” flow for first-time visitors <span class="muted">(Jun • when ready)</span></li>
+      <li><strong>Protocol / Architecture Guide</strong> — plain-English map of how Satoshium works <span class="muted">(Jul • when ready)</span></li>
+      <li><strong>Claim Verifier (Trust Labels)</strong> — labels answers as Verified / Likely / Speculative / Unknown <span class="muted">(Aug–Sept • when ready)</span></li>
+      <li><strong>Source Transparency</strong> — shows where an answer came from <span class="muted">(Sept • when ready)</span></li>
+      <li><strong>Builder Gateway</strong> — contributor entry points <span class="muted">(late 2026–early 2027 • optional)</span></li>
+    </ul>
+
+    <p class="muted" style="margin:10px 0 0;">
+      Canon remains the truth-source. One unified Satoshium AI can operate through multiple internal modes —
+      tools are released publicly only when they improve clarity and understanding.
+
+      <br><br>
+      <strong>Note:</strong> The Glossary Builder (initially planned as a demo) has now been completed
+      and promoted to the <strong>Satoshium Knowledge Engine</strong> as core infrastructure.
+    </p>
+  </div>
+
+            <!-- Footer mission statement + links -->
+     </main>                     
+<div class="wrap reflection">
+<hr />
+<div id="random-saying" class="muted" style="margin-bottom:14px; max-width:760px;">
+  Satoshium is being built slowly, in public, and with architectural discipline.
+</div>
+<hr />
+
+<div id="footer-container"></div>
+
+<script src="https://satoshium.link/assets/sayings.js"></script>
+<script>
+fetch("https://satoshium.link/components/footer.html")
+ .then(response => response.text())
+ .then(data => {
+ document.getElementById("footer-container").innerHTML = data;
+ });
+</script>
+</body>
+</html>
