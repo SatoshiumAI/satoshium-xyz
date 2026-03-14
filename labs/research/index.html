@@ -1,0 +1,413 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Satoshium Research — Papers, Essays, and Architecture Notes</title>
+
+  <style>
+    :root{
+      --card-wm: url('https://satoshium.link/assets/seal.png');
+      --bg:#07090d;
+      --panel:#0c1018;
+      --text:#e8edf7;
+      --muted:#9aa7bd;
+      --gold:#d6a34a;
+      --gold2:#f4c36a;
+      --line:rgba(214,163,74,.18);
+    }
+
+    *{box-sizing:border-box}
+    html,body{
+      margin:0;
+      padding:0;
+      background:var(--bg);
+      color:var(--text);
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      line-height:1.55;
+    }
+body{
+ padding-top:80px;
+}
+.reflection{
+ margin-top:40px;
+ margin-bottom:40px;
+ color:var(--muted);
+}
+    a{color:var(--gold2);text-decoration:none}
+    a:hover{color:var(--gold)}
+    .wrap{max-width:1080px;margin:0 auto;padding:0 18px}
+
+    .topbar{
+      position:sticky;top:0;z-index:20;
+      background:rgba(7,9,13,.92);
+      border-bottom:1px solid var(--line);
+      backdrop-filter: blur(8px);
+    }
+    .topbar .wrap{
+      display:flex;align-items:center;justify-content:space-between;
+      padding:14px 18px;
+    }
+
+    .brand{display:flex;align-items:center;gap:12px}
+    .mark{
+      width:42px;height:42px;border-radius:14px;display:grid;place-items:center;
+      background:linear-gradient(180deg, rgba(214,163,74,.22), rgba(214,163,74,.05));
+      border:1px solid var(--line);color:var(--gold2);font-weight:900
+    }
+    .name{letter-spacing:.16em;font-weight:800;font-size:12px;color:var(--gold2)}
+    .tag{font-size:12px;color:var(--muted);margin-top:2px}
+
+    .nav{display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+    .nav a{color:var(--muted);font-size:13px}
+    .nav a:hover{color:var(--gold2)}
+
+    .content{padding:34px 18px 60px}
+
+    h1,h2,h3{margin:0 0 10px}
+    h1{font-size:32px;color:var(--gold2)}
+    h2{font-size:21px;color:var(--gold2)}
+    h3{font-size:18px;color:#fff}
+    p,li{color:var(--text)}
+    hr{border:none;border-top:1px solid var(--line);margin:24px 0}
+
+    .pill,.badge{
+      display:inline-flex;align-items:center;gap:8px;
+      padding:8px 10px;border:1px solid var(--line);border-radius:999px;
+      background:rgba(214,163,74,.08);color:var(--gold2);font-size:12px;font-weight:700
+    }
+
+    .muted{color:var(--muted)}
+    .mini{font-size:12px}
+
+    .card{
+      position:relative;
+      overflow:hidden;
+      background:linear-gradient(
+        to bottom right,
+        rgba(12,16,24,.94),
+        rgba(12,16,24,.88)
+      );
+      border:1px solid var(--line);
+      border-radius:16px;
+      padding:18px;
+      margin:16px 0;
+      box-shadow:
+        0 0 0 1px rgba(214,163,74,.08),
+        0 20px 50px rgba(0,0,0,.45);
+    }
+
+    .card::before{
+      content:"";
+      position:absolute;
+      inset:-60px;
+      background-image: var(--card-wm);
+      background-repeat:no-repeat;
+      background-size:min(720px,70vw);
+      background-position:right -140px center;
+      opacity:.028;
+      filter:blur(1px);
+      pointer-events:none;
+      z-index:0;
+    }
+
+    .card > *{position:relative;z-index:1}
+.card {
+  transition: transform .18s ease, box-shadow .18s ease;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(0,0,0,.35);
+}
+
+.card {
+ border: 1px solid rgba(214,163,74,.15);
+}
+
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+      gap:16px;
+      margin-top:14px;
+    }
+
+    .module{
+      position:relative;
+      overflow:hidden;
+      border:1px solid var(--line);
+      border-radius:14px;
+      padding:14px;
+      background:linear-gradient(
+        to bottom right,
+        rgba(12,16,24,.78),
+        rgba(12,16,24,.60)
+      );
+      box-shadow:
+        0 0 0 1px rgba(214,163,74,.06),
+        0 10px 28px rgba(0,0,0,.22);
+    }
+
+    .module::before{
+      content:"";
+      position:absolute;
+      inset:-60px;
+      background-image: var(--card-wm);
+      background-repeat:no-repeat;
+      background-size:min(720px,70vw);
+      background-position:right -140px center;
+      opacity:.025;
+      filter:blur(1px);
+      pointer-events:none;
+      z-index:0;
+    }
+
+    .module > *{position:relative;z-index:1}
+
+    .module-top{
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:10px;
+      margin-bottom:8px;
+    }
+
+    .tagpill{
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
+      padding:5px 10px;
+      border:1px solid var(--line);
+      border-radius:999px;
+      color:var(--gold2);
+      background:rgba(214,163,74,.06);
+      font-size:12px;
+      white-space:nowrap;
+    }
+
+    .actions{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      margin-top:12px;
+      flex-wrap:wrap;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:9px 14px;
+      border:1px solid var(--line);
+      border-radius:999px;
+      background:rgba(214,163,74,.08);
+      color:var(--gold2);
+      font-size:13px;
+      font-weight:700;
+      text-decoration:none;
+    }
+
+    .btn:hover{
+      background:rgba(214,163,74,.14);
+      color:var(--gold);
+    }
+
+    .footer{
+      border-top:1px solid var(--line);
+      padding:18px 0 32px;
+      color:var(--muted);
+      margin-top:28px;
+    }
+
+    @media(max-width:760px){
+      .topbar .wrap{align-items:flex-start;flex-direction:column;gap:12px}
+      .nav{gap:12px}
+    }
+  </style>
+</head>
+
+<body>
+<div id="topbar-slot"></div>
+<script src="https://satoshium.link/components/topbar-loader.js"></script>
+
+  <main class="wrap content">
+
+    <div class="pill">📘 Research & Papers</div>
+
+    <h1 style="margin-top:12px;">Satoshium Research</h1>
+    <p class="muted" style="max-width:860px;">
+      This section collects long-form essays, research notes, architecture papers, and future whitepapers
+      related to decentralized intelligence, verification systems, governance design, and Bitcoin-aligned AI infrastructure.
+    </p>
+
+    <div class="card" style="--card-wm:url('https://satoshium.link/assets/seal.png');">
+      <h2 style="margin-top:0;">Why this section exists</h2>
+      <p>
+        Satoshium is being built as a long-term intelligence platform. Research matters because durable systems
+        require more than code — they require clear concepts, architectural reasoning, and documented thinking.
+      </p>
+      <p class="muted">
+        This section will gradually expand into a structured archive of whitepapers, architecture documents,
+        canonical essays, and supporting technical notes.
+      </p>
+    </div>
+
+    <div class="card" style="--card-wm:url('https://satoshium.link/assets/seal.png');">
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;">
+        <h2 style="margin-top:0;">Current Research Tracks</h2>
+        <span class="badge">🧭 Building in Public</span>
+      </div>
+
+      <div class="grid">
+        <section class="module">
+          <div class="module-top">
+            <h3>Decentralized Intelligence</h3>
+            <span class="tagpill">Core</span>
+          </div>
+          <p>
+            Foundational concepts related to AI systems that operate with explicit rules, distributed verification,
+            and long-term governance structures.
+          </p>
+          <div class="actions">
+            <span class="mini muted">Essays / concept papers</span>
+          </div>
+        </section>
+
+        <section class="module">
+          <div class="module-top">
+            <h3>Knowledge Engine</h3>
+            <span class="tagpill">Infrastructure</span>
+          </div>
+          <p>
+            Research around canonical vocabulary, structured knowledge systems, glossary architecture,
+            and the foundations of machine-readable conceptual consistency.
+          </p>
+          <div class="actions">
+            <span class="mini muted">Glossary / ontology / canon</span>
+          </div>
+        </section>
+
+        <section class="module">
+          <div class="module-top">
+            <h3>Trust & Verification</h3>
+            <span class="tagpill">Governance</span>
+          </div>
+          <p>
+            Work related to truth labels, source transparency, claim evaluation, evidence structures,
+            and trust-aware reasoning systems.
+          </p>
+          <div class="actions">
+            <span class="mini muted">Verification models</span>
+          </div>
+        </section>
+
+        <section class="module">
+          <div class="module-top">
+            <h3>Simulation & Scenario Design</h3>
+            <span class="tagpill">Labs</span>
+          </div>
+          <p>
+            Conceptual and technical notes supporting long-horizon simulations, decision environments,
+            governance modeling, and future intelligence tools.
+          </p>
+          <div class="actions">
+            <span class="mini muted">Labs / scenario systems</span>
+          </div>
+        </section>
+
+        <section class="module">
+          <div class="module-top">
+            <h3>Bitcoin + AI</h3>
+            <span class="tagpill">Education</span>
+          </div>
+          <p>
+            Research and essays exploring why Bitcoin matters for intelligence systems, including trust,
+            cryptographic rules, decentralized coordination, and long-term infrastructure alignment.
+          </p>
+          <div class="actions">
+            <span class="mini muted">Education / essays</span>
+          </div>
+        </section>
+
+        <section class="module">
+          <div class="module-top">
+            <h3>Agent Safety & Constraints</h3>
+            <span class="tagpill">Safety</span>
+          </div>
+          <p>
+            Architecture and policy thinking related to constrained autonomous systems, alignment boundaries,
+            agent firewall concepts, and safe interaction models.
+          </p>
+          <div class="actions">
+            <span class="mini muted">Aegis / alignment / safety</span>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <div class="card" style="--card-wm:url('https://satoshium.link/assets/seal.png');">
+      <h2 style="margin-top:0;">Initial Contents</h2>
+      <p class="muted">
+        The following content types are expected to appear here over time:
+      </p>
+      <ul>
+        <li><strong>Whitepapers</strong> — formal platform and architecture papers</li>
+        <li><strong>AI architecture papers</strong> — reasoning systems, agent layers, and trust infrastructure</li>
+        <li><strong>Canonical essays</strong> — long-form writings that shape the philosophy of the platform</li>
+        <li><strong>Research notes</strong> — exploratory thought pieces and future system proposals</li>
+        <li><strong>Technical explainers</strong> — plain-English breakdowns of complex concepts</li>
+      </ul>
+    </div>
+
+    <div class="card" style="--card-wm:url('https://satoshium.link/assets/seal.png');">
+      <h2 style="margin-top:0;">Current Status</h2>
+      <p>
+        This section is now live as a structured placeholder and will expand gradually as Satoshium research materials are published.
+      </p>
+      <p class="muted">
+        No hype. No paper dump. Only materials that improve clarity, architecture, and long-term platform coherence.
+      </p>
+    </div>
+
+    <div class="card" style="--card-wm:url('https://satoshium.link/assets/seal.png');">
+      <h2 style="margin-top:0;">Relationship to the Platform</h2>
+      <p>
+        Research supports the rest of the ecosystem. Over time, this section will inform and strengthen:
+      </p>
+      <ul>
+        <li><a href="https://satoshium.net/systems/">Satoshium Systems</a></li>
+        <li><a href="https://satoshium.net/services/">Satoshium Services</a></li>
+        <li><a href="https://satoshium.xyz/labs/">Satoshium Labs</a></li>
+        <li><a href="https://satoshium.link/repos/">Repo Map</a></li>
+        <li><a href="https://satoshium.ai/updates/">Public Updates</a></li>
+      </ul>
+    </div>
+</main>
+             <!-- Footer mission statement + links -->
+ <div class="wrap reflection">
+
+<hr>
+
+<p>
+<div id="random-saying" class="muted">
+  Satoshium is being built slowly, in public, and with architectural discipline.
+</p>
+
+<hr>
+
+</div>
+<div id="footer-container"></div>
+<script src="https://satoshium.link/assets/sayings.js"></script>
+<script>
+fetch("https://satoshium.link/components/footer.html")
+ .then(response => response.text())
+ .then(data => {
+ document.getElementById("footer-container").innerHTML = data;
+ });
+</script>
+</body>
+</html>
+
+
+</html>
