@@ -181,23 +181,8 @@ ul{margin:8px 0 0 18px}
 </style>
 </head>
 <body id="top">
-<div id="topbar-container"></div>
-<script>
-fetch("https://satoshium.link/components/topbar.html")
-  .then(response => response.text())
-  .then(data => {
-    document.getElementById("topbar-container").innerHTML = data;
-
-    const path = window.location.pathname.toLowerCase();
-
-    function setActive(key){
-      const el = document.querySelector(`.topbar .nav a[data-nav="${key}"]`);
-      if (el) el.classList.add("active");
-    }
-
-    setActive("xyz");
-  });
-</script>
+<div id="topbar-slot"></div>
+<script src="https://satoshium.link/components/topbar-loader.js"></script>
 
 <main class="wrap content">
 
