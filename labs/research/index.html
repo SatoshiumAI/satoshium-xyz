@@ -64,6 +64,19 @@ body{
 
     .content{padding:34px 18px 60px}
 
+    .wrap.content{
+  opacity:0;
+  transform:translateY(6px);
+  animation:pageEnter .28s cubic-bezier(.22,.61,.36,1) forwards;
+}
+
+@keyframes pageEnter{
+ to{
+ opacity:1;
+ transform:translateY(0);
+ }
+}
+
     h1,h2,h3{margin:0 0 10px}
     h1{font-size:32px;color:var(--gold2)}
     h2{font-size:21px;color:var(--gold2)}
