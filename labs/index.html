@@ -37,6 +37,19 @@ body{
   padding:0 18px;
 }
 
+.wrap.content{
+  opacity:0;
+  transform:translateY(6px);
+  animation:pageEnter .28s cubic-bezier(.22,.61,.36,1) forwards;
+}
+
+@keyframes pageEnter{
+ to{
+ opacity:1;
+ transform:translateY(0);
+ }
+}
+  
 .content{
   padding:40px 0 60px;
 }
