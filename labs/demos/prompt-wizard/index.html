@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Prompt Wizard | Satoshium Labs</title>
+  <meta name="description" content="Prompt Wizard helps visitors structure better AI prompts using a clean, guided Satoshium Labs interface." />
+  <style>
+    :root {
+      --bg: #08090d;
+      --panel: #11121a;
+      --border: #1a1b26;
+      --text: #e8e6e0;
+      --muted: #6b7280;
+      --gold: #d4a017;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: Arial, sans-serif;
+    }
+
+    .wrap {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 32px 20px 48px;
+    }
+
+    .hero {
+      margin-bottom: 20px;
+    }
+
+    .eyebrow {
+      color: var(--gold);
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    h1 {
+      margin: 0 0 10px;
+      font-size: 2rem;
+      line-height: 1.15;
+    }
+
+    .subtext {
+      color: var(--muted);
+      max-width: 760px;
+      line-height: 1.6;
+      margin-bottom: 18px;
+    }
+
+    .meta {
+      color: var(--muted);
+      font-size: 0.95rem;
+      margin-bottom: 28px;
+    }
+
+    .frame-card {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .frame-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 18px;
+      border-bottom: 1px solid var(--border);
+      background: rgba(255,255,255,0.01);
+    }
+
+    .frame-title {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .frame-note {
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    .app-frame {
+      width: 100%;
+      height: 980px;
+      border: 0;
+      display: block;
+      background: #000;
+    }
+
+    .notes {
+      margin-top: 22px;
+      padding: 18px 20px;
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+    }
+
+    .notes h2 {
+      margin: 0 0 10px;
+      font-size: 1rem;
+      color: var(--gold);
+    }
+
+    .notes p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    @media (max-width: 900px) {
+      .app-frame {
+        height: 1100px;
+      }
+
+      h1 {
+        font-size: 1.6rem;
+      }
+
+      .frame-top {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 6px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div id="topbar-slot" data-topbar="universe"></div>
+<script src="/components/topbar-loader.js"></script>
+
+  <main class="wrap">
+    <section class="hero">
+      <div class="eyebrow">Satoshium Labs Demo</div>
+      <h1>Prompt Wizard</h1>
+      <div class="subtext">
+        Prompt Wizard helps visitors turn rough ideas into clearer, stronger prompts using a structured Satoshium Labs workflow.
+      </div>
+      <div class="meta">
+        Browser-based • Static build • Guided prompt design
+      </div>
+    </section>
+
+    <section class="frame-card">
+      <div class="frame-top">
+        <div class="frame-title">Live Demo</div>
+        <div class="frame-note">Embedded from Satoshium Labs static deployment</div>
+      </div>
+
+      <iframe
+        class="app-frame"
+        src="https://satoshiumai.github.io/satoshium-labs/demos/prompt-wizard/"
+        title="Prompt Wizard"
+        loading="lazy"
+      ></iframe>
+    </section>
+
+    <section class="notes">
+      <h2>What this demo does</h2>
+      <p>
+        This tool helps structure better AI prompts by guiding the user through goal, tone, output format, constraints, and background context. It is designed as a browser-based Satoshium Labs demo and can be expanded over time.
+      </p>
+    </section>
+  </main>
+
+ <div class="wrap reflection">
+<hr />
+<div id="random-saying" class="muted" style="margin-bottom:14px; max-width:760px;">
+  Satoshium is being built slowly, in public, and with architectural discipline.
+</div>
+<hr />
+
+<div id="footer-container"></div>
+
+<script src="https://satoshium.link/assets/sayings.js"></script>
+<script>
+fetch("https://satoshium.link/components/footer.html")
+ .then(response => response.text())
+ .then(data => {
+ document.getElementById("footer-container").innerHTML = data;
+ });
+</script>
+</body>
+</html>
