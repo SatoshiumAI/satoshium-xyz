@@ -82,6 +82,23 @@ border-top:1px solid var(--line);
 margin:22px 0
 }
 
+  <style>
+  .app-frame {
+    width: 100%;
+    border: 0;
+    display: block;
+    background: #000;
+
+    /* KEY FIXES */
+    height: 100vh;        /* full viewport height */
+    overflow: hidden;     /* prevents inner scroll */
+  }
+
+  /* OPTIONAL: remove extra page scroll spacing */
+  .frame-card {
+    overflow: hidden;
+  }
+
 /* ===== Cards ===== */
 
 .card{
