@@ -95,13 +95,21 @@ body{
       color: var(--muted);
     }
 
-    .app-frame {
-      width: 100%;
-      height: 980px;
-      border: 0;
-      display: block;
-      background: #000;
-    }
+ .app-frame {
+    width: 100%;
+    border: 0;
+    display: block;
+    background: #000;
+
+    /* KEY FIXES */
+    height: 100vh;        /* full viewport height */
+    overflow: hidden;     /* prevents inner scroll */
+  }
+
+  /* OPTIONAL: remove extra page scroll spacing */
+  .frame-card {
+    overflow: hidden;
+  }
 
     .notes {
       margin-top: 22px;
