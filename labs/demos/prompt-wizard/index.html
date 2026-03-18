@@ -95,21 +95,20 @@ body{
       color: var(--muted);
     }
 
-  .app-frame {
-    width: 100%;
-    border: 0;
-    display: block;
-    background: #000;
+.app-frame {
+  width: 100%;
+  border: 0;
+  display: block;
+  background: #000;
 
-    /* KEY FIXES */
-    height: 130vh;        /* full viewport height */
-    overflow: hidden;     /* prevents inner scroll */
-  }
-
-    .app-frame::-webkit-scrollbar {
-  display: none;
+  height: calc(100vh + 300px); /* more flexible than 130vh */
+  overflow: hidden;
 }
 
+.app-frame::-webkit-scrollbar {
+  display: none;
+}
+    
   /* OPTIONAL: remove extra page scroll spacing */
   .frame-card {
     overflow: hidden;
