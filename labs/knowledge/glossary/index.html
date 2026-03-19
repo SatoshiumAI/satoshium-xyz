@@ -1,1 +1,236 @@
-test
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Glossary Hub | Satoshium Labs</title>
+  <meta name="description" content="Glossary Hub provides canonical terminology for the Satoshium ecosystem." />
+  <style>
+    :root {
+      --bg: #08090d;
+      --panel: #11121a;
+      --border: #1a1b26;
+      --text: #e8e6e0;
+      --muted: #6b7280;
+      --gold: #d4a017;
+    }
+
+html,body{
+margin:0;
+padding:0;
+background:var(--bg);
+color:var(--text);
+font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+line-height:1.55
+}
+body{
+ padding-top:80px;
+}
+    
+    * {
+      box-sizing: border-box;
+    }
+
+    .wrap {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 32px 20px 48px;
+    }
+
+    .hero {
+      margin-bottom: 20px;
+    }
+
+    .eyebrow {
+      color: var(--gold);
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    h1 {
+      margin: 0 0 10px;
+      font-size: 2rem;
+      line-height: 1.15;
+    }
+
+    .subtext {
+      color: var(--muted);
+      max-width: 760px;
+      line-height: 1.6;
+      margin-bottom: 18px;
+    }
+
+    .meta {
+      color: var(--muted);
+      font-size: 0.95rem;
+      margin-bottom: 28px;
+    }
+
+    .frame-card {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .frame-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 18px;
+      border-bottom: 1px solid var(--border);
+      background: rgba(255,255,255,0.01);
+    }
+
+    .frame-title {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .frame-note {
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+.app-frame {
+  width: 100%;
+  border: 0;
+  display: block;
+  background: #000;
+
+  height: calc(100vh + 300px); /* more flexible than 130vh */
+  overflow: hidden;
+}
+
+.app-frame::-webkit-scrollbar {
+  display: none;
+}
+    
+  /* OPTIONAL: remove extra page scroll spacing */
+  .frame-card {
+    overflow: hidden;
+  }
+
+  /* OPTIONAL: remove extra page scroll spacing */
+  .frame-card {
+    overflow: hidden;
+  }
+
+    .notes {
+      margin-top: 22px;
+      padding: 18px 20px;
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+    }
+
+    .notes h2 {
+      margin: 0 0 10px;
+      font-size: 1rem;
+      color: var(--gold);
+    }
+
+    .notes p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    @media (max-width: 900px) {
+      .app-frame {
+        height: 1100px;
+      }
+
+      h1 {
+        font-size: 1.6rem;
+      }
+
+      .frame-top {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 6px;
+      }
+    }
+
+/* ===== Pills ===== */
+
+.pill{
+display:inline-flex;
+align-items:center;
+gap:8px;
+padding:8px 10px;
+border:1px solid var(--line);
+border-radius:999px;
+background:rgba(214,163,74,.08);
+color:var(--gold2);
+font-size:12px;
+font-weight:700
+}
+
+ul{
+margin:8px 0 0 18px
+}
+    
+  </style>
+</head>
+<body>
+
+<div id="topbar-slot" data-topbar="platform"></div>
+<script src="/components/topbar-loader.js"></script>
+
+  <main class="wrap">
+    <section class="hero">
+      <div class="pill">🧙 Satoshium Labs</div>
+      <h2 style="margin-top:12px;">Glossary Hub</h2>
+      <div class="subtext">
+        Glossary Hub provides canonical terminology for the Satoshium ecosystem.
+      </div>
+      <div class="meta">
+        Browser-based • Static build • Canonical terminology design
+      </div>
+    </section>
+
+    <section class="frame-card">
+      <div class="frame-top">
+        <div class="frame-title">Live Demo</div>
+        <div class="frame-note">Live browser-based demo</div>
+      </div>
+
+      <iframe
+        class="app-frame"
+        src="https://satoshiumai.github.io/satoshium-labs/knowledge/glossary/index.html"
+        title="Glossary Hub"
+        loading="lazy"
+      ></iframe>
+    </section>
+
+    <section class="notes">
+      <h2>What this app does</h2>
+      <p>
+        This tool helps Glossary Hub provide canonical terminology for the Satoshium ecosystem.
+      </p>
+    </section>
+  </main>
+
+ <div class="wrap reflection">
+<hr />
+<div id="random-saying" class="muted" style="margin-bottom:14px; max-width:760px;">
+  Satoshium is being built slowly, in public, and with architectural discipline.
+</div>
+<hr />
+
+<div id="footer-container"></div>
+
+<script src="https://satoshium.link/assets/sayings.js"></script>
+<script>
+fetch("https://satoshium.link/components/footer.html")
+ .then(response => response.text())
+ .then(data => {
+ document.getElementById("footer-container").innerHTML = data;
+ });
+</script>
+</body>
+</html>
