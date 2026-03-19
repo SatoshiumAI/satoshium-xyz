@@ -177,22 +177,6 @@ margin:8px 0 0 18px
   </style>
 </head>
 <body>
-
-<div id="topbar-slot" data-topbar="platform"></div>
-<script src="/components/topbar-loader.js"></script>
-
-  <main class="wrap">
-    <section class="hero">
-      <div class="pill">🧙 Satoshium Labs</div>
-      <h2 style="margin-top:12px;">Glossary Hub</h2>
-      <div class="subtext">
-        Glossary Hub provides canonical terminology for the Satoshium ecosystem.
-      </div>
-      <div class="meta">
-        Browser-based • Static build • Canonical terminology design
-      </div>
-    </section>
-
     <section class="frame-card">
       <div class="frame-top">
         <div class="frame-title">Live</div>
@@ -207,30 +191,5 @@ margin:8px 0 0 18px
 ></iframe>
     </section>
 
-    <section class="notes">
-      <h2>What this app does</h2>
-      <p>
-        This tool helps Glossary Hub provide canonical terminology for the Satoshium ecosystem.
-      </p>
-    </section>
-  </main>
-
- <div class="wrap reflection">
-<hr />
-<div id="random-saying" class="muted" style="margin-bottom:14px; max-width:760px;">
-  Satoshium is being built slowly, in public, and with architectural discipline.
-</div>
-<hr />
-
-<div id="footer-container"></div>
-
-<script src="https://satoshium.link/assets/sayings.js"></script>
-<script>
-fetch("https://satoshium.link/components/footer.html")
- .then(response => response.text())
- .then(data => {
- document.getElementById("footer-container").innerHTML = data;
- });
-</script>
 </body>
 </html>
