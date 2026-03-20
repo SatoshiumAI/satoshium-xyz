@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Satoshium Labs — Simulations</title>
+<style>
+:root{
+  --card-wm: url('https://satoshium.link/assets/seal.png');
+  --bg:#07090d;
+  --text:#e8edf7;
+  --muted:#9aa7bd;
+  --gold:#d6a34a;
+  --gold2:#f4c36a;
+  --line:rgba(214,163,74,.18);
+}
+*{box-sizing:border-box}
+html,body{
+  margin:0;
+  padding:0;
+  background:var(--bg);
+  color:var(--text);
+  font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+}
+body{padding-top:80px}
+.wrap{max-width:1100px;margin:0 auto;padding:0 18px}
+.wrap.content{
+  opacity:0;
+  transform:translateY(6px);
+  animation:pageEnter .28s cubic-bezier(.22,.61,.36,1) forwards;
+}
+@keyframes pageEnter{
+  to{opacity:1;transform:translateY(0)}
+}
+.content{padding:40px 0 60px}
+h1{font-size:30px;color:var(--gold2);margin:0 0 10px}
+h2{font-size:20px;color:var(--gold2);margin:0 0 10px}
+.muted{color:var(--muted)}
+.pill{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:8px 10px;
+  border:1px solid var(--line);
+  border-radius:999px;
+  background:rgba(214,163,74,.08);
+  color:var(--gold2);
+  font-size:12px;
+  font-weight:700;
+  text-decoration:none;
+}
+.section-card{
+  margin-top:28px;
+  background:linear-gradient(to bottom right, rgba(12,16,24,.94), rgba(12,16,24,.88));
+  border:1px solid var(--line);
+  border-radius:18px;
+  padding:22px;
+  box-shadow:0 0 0 1px rgba(214,163,74,.08),0 20px 50px rgba(0,0,0,.45);
+}
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:22px;
+  margin-top:18px;
+}
+.card{
+  position:relative;
+  overflow:hidden;
+  background:linear-gradient(to bottom right, rgba(12,16,24,.94), rgba(12,16,24,.88));
+  border:1px solid var(--line);
+  border-radius:16px;
+  padding:22px;
+  box-shadow:0 0 0 1px rgba(214,163,74,.08),0 20px 50px rgba(0,0,0,.45);
+  transition:transform .15s ease, box-shadow .15s ease;
+}
+.card:hover{
+  transform:translateY(-4px);
+  box-shadow:0 0 0 1px rgba(214,163,74,.12),0 24px 60px rgba(0,0,0,.55);
+}
+.card::before{
+  content:"";
+  position:absolute;
+  inset:-60px;
+  background-image:var(--card-wm);
+  background-repeat:no-repeat;
+  background-size:min(720px,70vw);
+  background-position:right -140px center;
+  opacity:.03;
+  filter:blur(1px);
+  pointer-events:none;
+}
+.card p{color:var(--muted);margin:0 0 12px}
+.card .pill{margin-top:8px}
+.hero-note{margin-top:18px;max-width:860px;line-height:1.65}
+.reflection{margin:40px auto 0;color:var(--muted)}
+hr{border:none;border-top:1px solid rgba(214,163,74,.18);margin:16px 0}
+</style>
+</head>
+<body id="top">
+<div id="topbar-slot" data-topbar="platform"></div>
+<script src="/components/topbar-loader.js"></script>
+
+<main class="wrap content">
+  <div class="pill">Satoshium Labs</div>
+  <h1>Simulations</h1>
+
+  <p class="muted hero-note">
+    Satoshium simulations are interactive system environments used to explore trust, resilience,
+    coordination, escalation, recovery, and future-world infrastructure design. These modules turn
+    Satoshium ideas into playable or observable systems that can be tested directly in the browser.
+  </p>
+
+  <section class="section-card" style="--card-wm:url('https://satoshium.link/assets/seal.png');">
+    <h2>Featured Simulation</h2>
+    <div class="grid">
+      <div class="card" style="--card-wm:url('https://satoshium.link/assets/seal.png');">
+        <h2>Sovereign Signal <span class="pill" style="margin-bottom:8px;">Phase 1B</span></h2>
+        <p>
+          A live Satoshium Labs settlement simulation exploring infrastructure, civic trust,
+          escalation, resilience, and recovery under pressure.
+        </p>
+        <p>
+          Build a future settlement, stabilize its core systems, survive crises, and guide the outpost
+          toward sovereign status.
+        </p>
+        <a href="./sovereign-signal/" class="pill">Open Simulation →</a>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="grid">
+      <div class="card" style="--card-wm:url('https://satoshium.link/assets/seal.png');">
+        <h2>What Simulations Explore</h2>
+        <p>
+          Simulations allow Satoshium to test ideas dynamically rather than only explain them through
+          essays or architecture pages.
+        </p>
+        <p>
+          Themes may include governance, system failure, information integrity, decentralized
+          coordination, infrastructure stress, and future institutional design.
+        </p>
+      </div>
+
+      <div class="card" style="--card-wm:url('https://satoshium.link/assets/seal.png');">
+        <h2>Current State</h2>
+        <p>
+          This section is still in active buildout. Sovereign Signal is the first major live simulation
+          currently available inside Satoshium Labs.
+        </p>
+        <p>
+          Additional simulations may be added over time as the Labs layer continues to mature.
+        </p>
+      </div>
+
+      <div class="card" style="--card-wm:url('https://satoshium.link/assets/seal.png');">
+        <h2>Return to Labs</h2>
+        <p>
+          View the broader Labs layer, including tools, demos, experiments, and knowledge systems.
+        </p>
+        <a href="../" class="pill">Back to Labs →</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<div class="wrap reflection">
+  <hr>
+  <div id="random-saying" class="muted" style="margin-bottom:14px; max-width:760px;">
+    Simulations help reveal which systems hold together under pressure.
+  </div>
+  <hr>
+  <div id="footer-container"></div>
+</div>
+
+<script src="https://satoshium.link/assets/sayings.js"></script>
+<script>
+fetch("https://satoshium.link/components/footer.html")
+  .then(response => response.text())
+  .then(data => {
+    document.getElementById("footer-container").innerHTML = data;
+  });
+</script>
+</body>
+</html>
