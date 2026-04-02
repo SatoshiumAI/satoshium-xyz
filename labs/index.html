@@ -64,6 +64,11 @@ h2{font-size:20px;color:var(--gold2);margin:0 0 10px}
   gap:22px;
   margin-top:18px;
 }
+  .labs-intro-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 24px;
+}
 .card{
   position:relative;
   overflow:hidden;
@@ -109,25 +114,28 @@ hr{border:none;border-top:1px solid rgba(214,163,74,.18);margin:16px 0}
   <p></p>
   <p>Satoshium Labs contains interactive tools, simulations, and experimental systems you can explore directly in your browser. These modules demonstrate how decentralized intelligence, AI governance, trust infrastructure, and long-horizon coordination models work in practice.
   </p>
-<div class="card">
-  <h2>Featured Orientation Tool</h2>
- <p>
-    New to Satoshium? Start here. <a href="https://satoshium.ai/mentor">Start Here →</a>
-  </p> 
+<div class="labs-intro-grid">
+
+  <div class="card">
+    <h3>Featured Orientation Tool</h3>
+    <p><strong>New to Satoshium? Start here.</strong></p>
     <p>
-    The Onboarding Mentor helps visitors navigate the Satoshium platform through
-    an adaptive orientation experience developed within Satoshium Labs.
-  </p>
+      The Onboarding Mentor provides a structured introduction to the platform’s architecture,
+      systems, knowledge layers, and experimental tools.
+    </p>
+    <a class="button" href="/start-here/">Start Here →</a>
   </div>
-   <div class="card">
-      <h2>In Satoshium Labs you can:</h2>
-      <ul>
-        <li> Explore simulations</li>
-        <li> Test infrastructure concepts</li>
-        <li> Navigate platform knowledge</li>
-        <li> Interact with experimental AI systems</li>
-      </ul>
-    </div>
+
+  <div class="card">
+    <h3>What you can explore in Satoshium Labs</h3>
+    <ul>
+      <li>Explore simulations</li>
+      <li>Test infrastructure concepts</li>
+      <li>Navigate platform knowledge</li>
+      <li>Interact with experimental AI systems</li>
+    </ul>
+  </div>
+</div>
     <section class="section-card" style="--card-wm:url('https://satoshium.link/assets/seal.png');">
     <h2>Live Tools & Simulations</h2>
     <div class="grid">
