@@ -7,13 +7,41 @@
   <link rel="alternate icon" href="https://satoshium.xyz/assets/favicon.ico">
   <link rel="apple-touch-icon" href="https://satoshium.xyz/assets/apple-touch-icon.png">
   <meta name="theme-color" content="#9b6cff">
-
+ 
+  <!-- TIER 3 — SEO: meta description -->
+  <meta name="description" content="Explore live demos and experiments from Satoshium Labs — sovereign AI tools built in public. Try Satoshium Hub Chat, Prompt Wizard, and upcoming experiments.">
+ 
+  <!-- TIER 3 — SEO: Open Graph -->
+  <meta property="og:title" content="Satoshium Labs — Live Demos & Experiments">
+  <meta property="og:description" content="Explore live demos and experiments from Satoshium Labs — sovereign AI tools built in public.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://satoshium.xyz/labs/demos/">
+  <meta property="og:image" content="https://satoshium.ai/assets/og-labs-demos.png">
+  <meta property="og:site_name" content="Satoshium Labs">
+  <meta property="og:locale" content="en_US">
+ 
+  <!-- TIER 3 — SEO: Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Satoshium Labs — Live Demos & Experiments">
+  <meta name="twitter:description" content="Explore live demos and experiments from Satoshium Labs — sovereign AI tools built in public.">
+  <meta name="twitter:image" content="https://satoshium.ai/assets/og-labs-demos.png">
+  <meta name="twitter:site" content="@SatoshiumAI">
+ 
+  <!-- TIER 3 — SEO: canonical URL -->
+  <link rel="canonical" href="https://satoshium.xyz/labs/demos/">
+ 
+  <!-- TIER 3 — PERFORMANCE: preconnect + dns-prefetch for external origins -->
+  <link rel="preconnect" href="https://satoshium.link" crossorigin>
+  <link rel="dns-prefetch" href="https://satoshium.link">
+  <link rel="dns-prefetch" href="https://satoshium.ai">
+  <link rel="dns-prefetch" href="https://satoshiumai.github.io">
+ 
   <title>Satoshium — Demos</title>
-
+ 
 <style>
-
+ 
 /* ===== Core Theme ===== */
-
+ 
 :root{
  --card-wm: url('https://satoshium.link/assets/seal.png');
  --bg:#07090d;
@@ -24,109 +52,98 @@
  --gold2:#f4c36a;
  --line:rgba(214,163,74,.18);
 }
-
+ 
 *{box-sizing:border-box}
-
+ 
 html,body{
 margin:0;
 padding:0;
 background:var(--bg);
 color:var(--text);
 font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
-line-height:1.55
+line-height:1.55;
+/* TIER 3 — UX: smooth scroll for in-page anchors */
+scroll-behavior:smooth;
 }
 body{
  padding-top:80px;
 }
 a{color:var(--gold2);text-decoration:none}
 a:hover{color:var(--gold)}
-
+ 
+/* TIER 3 — ACCESSIBILITY: visible keyboard focus ring */
+:focus-visible{
+  outline:2px solid var(--gold2);
+  outline-offset:3px;
+}
+ 
 .wrap{max-width:980px;margin:0 auto;padding:0 18px}
-
+ 
   .wrap.content{
   opacity:0;
   transform:translateY(6px);
   animation:pageEnter .28s cubic-bezier(.22,.61,.36,1) forwards;
 }
-
+ 
 @keyframes pageEnter{
  to{
  opacity:1;
  transform:translateY(0);
  }
 }
-
+ 
 /* ===== Layout ===== */
-
+ 
 .content{
 padding:34px 18px 60px
 }
-
+ 
 h1,h2{
 margin:0 0 10px
 }
-
+ 
 h1{
 font-size:30px;
 color:var(--gold2)
 }
-
+ 
 h2{
 font-size:20px;
 color:var(--gold2);
 margin-top:26px
 }
-
+ 
 p,li{
 color:var(--text)
 }
-
+ 
 hr{
 border:none;
 border-top:1px solid var(--line);
 margin:22px 0
 }
-
-  <style>
-  .app-frame {
-    width: 100%;
-    border: 0;
-    display: block;
-    background: #000;
-
-    /* KEY FIXES */
-    height: 100vh;        /* full viewport height */
-    overflow: hidden;     /* prevents inner scroll */
-  }
-
-  /* OPTIONAL: remove extra page scroll spacing */
-  .frame-card {
-    overflow: hidden;
-  }
-
-/* ===== Cards ===== */
-
+ 
+/* ===== Cards — consolidated from three declarations ===== */
+ 
 .card{
 position: relative;
 overflow: hidden;
-
 background: linear-gradient(
 to bottom right,
 rgba(12,16,24,.94),
 rgba(12,16,24,.88)
 );
-
-border:1px solid var(--line);
+/* TIER 3 — CSS FIX: merged duplicate border (was .18 then overridden to .15) */
+border:1px solid rgba(214,163,74,.15);
 border-radius:16px;
-
 padding:16px 16px;
 margin:16px 0;
-
 box-shadow:
 0 0 0 1px rgba(214,163,74,.08),
 0 20px 50px rgba(0,0,0,.45);
+transition: transform .18s ease, box-shadow .18s ease;
 }
-
+ 
 .card::before{
 content:"";
 position:absolute;
@@ -140,42 +157,50 @@ filter: blur(1px);
 pointer-events:none;
 z-index:0;
 }
-
+ 
+.card > *{
+position:relative;
+z-index:1
+}
+ 
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(0,0,0,.35);
+}
+ 
+/* ===== App frame (for iframe embeds) ===== */
+ 
+.app-frame {
+  width: 100%;
+  border: 0;
+  display: block;
+  background: #000;
+  height: 100vh;
+  overflow: hidden;
+}
+ 
+.frame-card {
+  overflow: hidden;
+}
+ 
 .grid-2{
   display:grid;
   grid-template-columns:1fr 1fr;
   gap:16px
 }
-  
-.card > *{
-position:relative;
-z-index:1
-}
-.card {
-  transition: transform .18s ease, box-shadow .18s ease;
-}
-
-.card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 10px 25px rgba(0,0,0,.35);
-}
-
-.card {
- border: 1px solid rgba(214,163,74,.15);
-}
-
+ 
 .muted{
 color:var(--muted)
 }
-
+ 
 .footer{
 border-top:1px solid var(--line);
 padding:18px 0 32px;
 color:var(--muted)
 }
-
+ 
 /* ===== Pills ===== */
-
+ 
 .pill{
 display:inline-flex;
 align-items:center;
@@ -188,122 +213,227 @@ color:var(--gold2);
 font-size:12px;
 font-weight:700
 }
-
+ 
 ul{
 margin:8px 0 0 18px
 }
-
+ 
+/* TIER 3 — CSS: badge styles (used by status indicators) */
+ 
+.badge{
+  display:inline-block;
+  padding:4px 10px;
+  border-radius:999px;
+  font-size:12px;
+  font-weight:700;
+  color:var(--muted);
+  background:rgba(154,167,189,.08);
+  border:1px solid rgba(154,167,189,.15);
+  white-space:nowrap;
+}
+ 
+.badge.live{
+  color:var(--gold2);
+  background:rgba(214,163,74,.08);
+  border-color:rgba(214,163,74,.18);
+}
+ 
+/* TIER 3 — CSS: button row + button styles (used by launch links) */
+ 
+.btnrow{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-top:8px;
+}
+ 
+.btn{
+  display:inline-block;
+  padding:8px 18px;
+  border-radius:8px;
+  font-size:14px;
+  font-weight:600;
+  color:var(--gold2);
+  border:1px solid var(--line);
+  background:rgba(214,163,74,.06);
+  transition:background .15s ease, border-color .15s ease;
+}
+ 
+.btn:hover{
+  background:rgba(214,163,74,.14);
+  border-color:rgba(214,163,74,.30);
+  color:var(--gold);
+}
+ 
+/* TIER 3 — CSS: card inner typography (used by Prompt Wizard card) */
+ 
+.card-header{
+  font-size:20px;
+  color:var(--gold2);
+  margin:0 0 10px;
+}
+ 
+.card-body{
+  color:var(--text);
+  margin:8px 0 10px;
+}
+ 
+.card-link{
+  display:inline-block;
+  color:var(--gold2);
+  font-weight:600;
+  margin-top:6px;
+}
+ 
+.card-link:hover{
+  color:var(--gold);
+}
+ 
+/* TIER 3 — CSS FIX: added missing .reflection rule */
+.reflection{
+  margin-top:40px;
+  margin-bottom:40px;
+}
+ 
+/* TIER 3 — ACCESSIBILITY: reduced-motion guard */
+@media (prefers-reduced-motion:reduce){
+  html,body{
+    scroll-behavior:auto;
+  }
+ 
+  .wrap.content{
+    animation:none;
+    opacity:1;
+    transform:none;
+  }
+ 
+  .card{
+    transition:none;
+  }
+ 
+  .card:hover{
+    transform:none;
+  }
+ 
+  .btn{
+    transition:none;
+  }
+}
+ 
 </style>
 </head>
-
+ 
 <body id="top">
-
+ 
 <div id="topbar-slot" data-topbar="platform"></div>
 <script src="/components/topbar-loader.js"></script>
-  
-<main class="wrap content">
-
+ 
+<!-- TIER 3 — ACCESSIBILITY: id="main-content" for landmark targeting -->
+<main id="main-content" class="wrap content">
+ 
   <div class="pill">🧪 Satoshium Labs</div>
-
+ 
   <h1 style="margin-top:12px;">Live Demos & Experiments</h1>
   <p class="muted">
-    This page lists what you can try right now, and what’s coming next.
+    This page lists what you can try right now, and what's coming next.
     Satoshium ships tools publicly — one visible step at a time.
   </p>
-
+ 
   <!-- AI CHAT -->
-  <div class="card" style="--card-wm:url('https://satoshium.link/assets/seal.png');">
+  <!-- TIER 3 — ACCESSIBILITY: aria-labelledby on section cards -->
+  <div class="card" style="--card-wm:url('https://satoshium.link/assets/seal.png');" aria-labelledby="heading-hub-chat">
     <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;">
-      <h2 style="margin-top:0;">Satoshium Hub Chat</h2>
+      <h2 id="heading-hub-chat" style="margin-top:0;">Satoshium Hub Chat</h2>
       <span class="badge live">✅ LIVE</span>
     </div>
-
+ 
     <p class="muted" style="margin:8px 0 10px;">
       Interact with the Satoshium intelligence layer.
     </p>
-
+ 
     <div class="btnrow">
-      <a class="btn" href="./ai-chat.html" target="_blank" rel="noreferrer">Launch Satoshium AI</a> 
-    </div>
-  </div>
-
-  <!-- EXPERIMENTS -->
-  <div class="card" style="--card-wm:url('https://satoshium.link/assets/seal.png');">
-    <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;">
-      <h2 style="margin-top:0;">Satoshium Experiments</h2>
-      <span class="badge">🧪 WORK IN PROGRESS</span>
-    </div>
-
-    <p class="muted" style="margin:8px 0 10px;">
-      Experimental modules and prototypes — early demonstrations of sovereign intelligence tools.
-    </p>
-
-    <div class="btnrow">
-      <a class="btn" href="../experiments/" target="_blank" rel="noreferrer">Launch Satoshium Experiments</a>
+      <a class="btn" href="./ai-chat.html" target="_blank" rel="noopener noreferrer">Launch Satoshium AI</a>
     </div>
   </div>
  
-<div class="card">
-  <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;">
-     <h2 class="card-header" style="margin-top:0;">Prompt Wizard</h2>
-    <span class="badge live">✅ LIVE</span>
+  <!-- EXPERIMENTS -->
+  <div class="card" style="--card-wm:url('https://satoshium.link/assets/seal.png');" aria-labelledby="heading-experiments">
+    <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;">
+      <h2 id="heading-experiments" style="margin-top:0;">Satoshium Experiments</h2>
+      <span class="badge">🧪 WORK IN PROGRESS</span>
+    </div>
+ 
+    <p class="muted" style="margin:8px 0 10px;">
+      Experimental modules and prototypes — early demonstrations of sovereign intelligence tools.
+    </p>
+ 
+    <div class="btnrow">
+      <a class="btn" href="../experiments/" target="_blank" rel="noopener noreferrer">Launch Satoshium Experiments</a>
+    </div>
   </div>
-  
+ 
+  <!-- PROMPT WIZARD -->
+  <div class="card" aria-labelledby="heading-prompt-wizard">
+    <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;">
+       <h2 class="card-header" id="heading-prompt-wizard" style="margin-top:0;">Prompt Wizard</h2>
+      <span class="badge live">✅ LIVE</span>
+    </div>
+ 
     <p class="card-body">
       Structure better AI prompts using a guided, browser-based workflow.
       Define goal, tone, format, constraints, and context — then generate a clean, ready-to-use prompt.
     </p>
-<p class="muted">
-  Part of Satoshium Labs — fully static, verifiable, and client-side only.
-</p>
-
-    <a href="https://satoshium.xyz/labs/demos/prompt-wizard/" class="card-link">
+    <p class="muted">
+      Part of Satoshium Labs — fully static, verifiable, and client-side only.
+    </p>
+ 
+    <a href="https://satoshium.xyz/labs/demos/prompt-wizard/" class="card-link" target="_blank" rel="noopener noreferrer">
       Launch Prompt Wizard →
     </a>
   </div>
-</div>
-  
+ 
   <!-- PLANNED -->
-  <div class="card" style="--card-wm:url('https://satoshium.link/assets/seal.png');">
+  <div class="card" style="--card-wm:url('https://satoshium.link/assets/seal.png');" aria-labelledby="heading-planned">
     <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;">
-      <h2 style="margin-top:0;">Planned Experiments (Tier 1 • 2026)</h2>
+      <h2 id="heading-planned" style="margin-top:0;">Planned Experiments (Tier 1 • 2026)</h2>
       <span class="badge">🧭 PROGRESS (NO DEADLINES)</span>
     </div>
-
+ 
     <p class="muted" style="margin:8px 0 10px;">
       These are the next public-facing tools planned for 2026, shipped in logical order.
-      Everything releases only when it’s ready — calm, steady, and verifiable.
+      Everything releases only when it's ready — calm, steady, and verifiable.
     </p>
-
+ 
     <ul>
       <li><strong>Protocol / Architecture Guide</strong> — plain-English map of how Satoshium works <span class="muted">(Jul • when ready)</span></li>
       <li><strong>Claim Verifier (Trust Labels)</strong> — labels answers as Verified / Likely / Speculative / Unknown <span class="muted">(Aug–Sept • when ready)</span></li>
       <li><strong>Source Transparency</strong> — shows where an answer came from <span class="muted">(Sept • when ready)</span></li>
       <li><strong>Builder Gateway</strong> — contributor entry points <span class="muted">(late 2026–early 2027 • optional)</span></li>
     </ul>
-
+ 
     <p class="muted" style="margin:10px 0 0;">
       Canon remains the truth-source. One unified Satoshium AI can operate through multiple internal modes —
       tools are released publicly only when they improve clarity and understanding.
-
+ 
       <br><br>
-      Note: The <strong><a href= "https://satoshium.xyz/labs/knowledge/glossary/">Glossary Hub</a></strong> (initially planned as the Glossary Builder demo) has now been completed
-      and promoted to the <strong><a href= "https://satoshium.ai/architecture/knowledge.html">Satoshium Knowledge Engine</a></strong> as core infrastructure.
+      Note: The <strong><a href="https://satoshium.xyz/labs/knowledge/glossary/" target="_blank" rel="noopener noreferrer">Glossary Hub</a></strong> (initially planned as the Glossary Builder demo) has now been completed
+      and promoted to the <strong><a href="https://satoshium.ai/architecture/knowledge.html" target="_blank" rel="noopener noreferrer">Satoshium Knowledge Engine</a></strong> as core infrastructure.
     </p>
   </div>
-</div>
  
             <!-- Footer mission statement + links -->
-     </main>                     
+     </main>
 <div class="wrap reflection">
 <hr />
 <div id="random-saying" class="muted" style="margin-bottom:14px; max-width:760px;">
   Satoshium is being built slowly, in public, and with architectural discipline.
 </div>
 <hr />
-
+ 
 <div id="footer-container"></div>
-
+<!-- TIER 3 — HTML FIX: added missing </div> to close reflection wrapper -->
+</div>
+ 
 <script src="https://satoshium.link/assets/sayings.js"></script>
 <script>
 fetch("https://satoshium.link/components/footer.html")
