@@ -7,13 +7,40 @@
   <link rel="alternate icon" href="https://satoshium.xyz/assets/favicon.ico">
   <link rel="apple-touch-icon" href="https://satoshium.xyz/assets/apple-touch-icon.png">
   <meta name="theme-color" content="#9b6cff">
-
+ 
+  <!-- TIER 3 — SEO: meta description -->
+  <meta name="description" content="Talk to Satoshium AI — a sovereign Bitcoin-aligned AI agent. Ask about Bitcoin, Satoshium, AI safety, or the future. Public experimental build from Satoshium Labs.">
+ 
+  <!-- TIER 3 — SEO: Open Graph -->
+  <meta property="og:title" content="Satoshium AI — Live Agent">
+  <meta property="og:description" content="Talk to a sovereign Bitcoin-aligned AI agent. Ask about Bitcoin, Satoshium, AI safety, or the future.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://satoshium.xyz/labs/demos/ai-chat.html">
+  <meta property="og:image" content="https://satoshium.ai/assets/og-ai-chat.png">
+  <meta property="og:site_name" content="Satoshium Labs">
+  <meta property="og:locale" content="en_US">
+ 
+  <!-- TIER 3 — SEO: Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Satoshium AI — Live Agent">
+  <meta name="twitter:description" content="Talk to a sovereign Bitcoin-aligned AI agent. Ask about Bitcoin, Satoshium, AI safety, or the future.">
+  <meta name="twitter:image" content="https://satoshium.ai/assets/og-ai-chat.png">
+  <meta name="twitter:site" content="@SatoshiumAI">
+ 
+  <!-- TIER 3 — SEO: canonical URL -->
+  <link rel="canonical" href="https://satoshium.xyz/labs/demos/ai-chat.html">
+ 
+  <!-- TIER 3 — PERFORMANCE: preconnect + dns-prefetch for external origins -->
+  <link rel="preconnect" href="https://satoshium.link" crossorigin>
+  <link rel="dns-prefetch" href="https://satoshium.link">
+  <link rel="dns-prefetch" href="https://www.chatbase.co">
+ 
   <title>Satoshium AI — Live Agent</title>
-
+ 
 <style>
-
+ 
 /* ===== Core Theme ===== */
-
+ 
 :root{
  --card-wm: url('https://satoshium.link/assets/seal.png');
  --bg:#07090d;
@@ -24,92 +51,98 @@
  --gold2:#f4c36a;
  --line:rgba(214,163,74,.18);
 }
-
+ 
 *{box-sizing:border-box}
-
+ 
 html,body{
 margin:0;
 padding:0;
 background:var(--bg);
 color:var(--text);
 font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
-line-height:1.55
+line-height:1.55;
+/* TIER 3 — UX: smooth scroll for in-page anchors */
+scroll-behavior:smooth;
 }
 body{
  padding-top:80px;
 }
 a{color:var(--gold2);text-decoration:none}
 a:hover{color:var(--gold)}
-
+ 
+/* TIER 3 — ACCESSIBILITY: visible keyboard focus ring */
+:focus-visible{
+  outline:2px solid var(--gold2);
+  outline-offset:3px;
+}
+ 
 .wrap{max-width:980px;margin:0 auto;padding:0 18px}
-
+ 
 .wrap.content{
   opacity:0;
   transform:translateY(6px);
   animation:pageEnter .28s cubic-bezier(.22,.61,.36,1) forwards;
 }
-
+ 
 @keyframes pageEnter{
  to{
  opacity:1;
  transform:translateY(0);
  }
 }
-  
+ 
 /* ===== Layout ===== */
-
+ 
 .content{
 padding:34px 18px 60px
 }
-
+ 
 h1,h2{
 margin:0 0 10px
 }
-
+ 
 h1{
 font-size:30px;
 color:var(--gold2)
 }
-
+ 
 h2{
 font-size:20px;
 color:var(--gold2);
 margin-top:26px
 }
-
+ 
 p,li{
 color:var(--text)
 }
-
+ 
 hr{
 border:none;
 border-top:1px solid var(--line);
 margin:22px 0
 }
-
-/* ===== Cards ===== */
-
+ 
+/* ===== Cards — consolidated from three declarations ===== */
+ 
 .card{
 position: relative;
 overflow: hidden;
-
 background: linear-gradient(
 to bottom right,
 rgba(12,16,24,.94),
 rgba(12,16,24,.88)
 );
-
-border:1px solid var(--line);
+/* TIER 3 — CSS FIX: merged duplicate border (was .18 then overridden to .15) */
+border:1px solid rgba(214,163,74,.15);
 border-radius:16px;
-
 padding:16px 16px;
 margin:16px 0;
-
 box-shadow:
 0 0 0 1px rgba(214,163,74,.08),
 0 20px 50px rgba(0,0,0,.45);
+transition: transform .18s ease, box-shadow .18s ease;
 }
-
+ 
 .card::before{
 content:"";
 position:absolute;
@@ -123,36 +156,29 @@ filter: blur(1px);
 pointer-events:none;
 z-index:0;
 }
-
+ 
 .card > *{
 position:relative;
 z-index:1
 }
-.card {
-  transition: transform .18s ease, box-shadow .18s ease;
-}
-
+ 
 .card:hover {
   transform: translateY(-3px);
   box-shadow: 0 10px 25px rgba(0,0,0,.35);
 }
-
-.card {
- border: 1px solid rgba(214,163,74,.15);
-}
-
+ 
 .muted{
 color:var(--muted)
 }
-
+ 
 .footer{
 border-top:1px solid var(--line);
 padding:18px 0 32px;
 color:var(--muted)
 }
-
+ 
 /* ===== Pills ===== */
-
+ 
 .pill{
 display:inline-flex;
 align-items:center;
@@ -165,56 +191,85 @@ color:var(--gold2);
 font-size:12px;
 font-weight:700
 }
-
+ 
 ul{
 margin:8px 0 0 18px
 }
-
+ 
+/* TIER 3 — CSS FIX: added missing .reflection rule */
+.reflection{
+  margin-top:40px;
+  margin-bottom:40px;
+}
+ 
+/* TIER 3 — ACCESSIBILITY: reduced-motion guard */
+@media (prefers-reduced-motion:reduce){
+  html,body{
+    scroll-behavior:auto;
+  }
+ 
+  .wrap.content{
+    animation:none;
+    opacity:1;
+    transform:none;
+  }
+ 
+  .card{
+    transition:none;
+  }
+ 
+  .card:hover{
+    transform:none;
+  }
+}
+ 
 </style>
 </head>
-
+ 
 <body id="top">
-
+ 
 <div id="topbar-slot" data-topbar="platform"></div>
 <script src="/components/topbar-loader.js"></script>
  
-<main class="wrap content">
+<!-- TIER 3 — ACCESSIBILITY: id="main-content" for landmark targeting -->
+<main id="main-content" class="wrap content">
   <h1>Talk to Satoshium AI</h1>
   <p class="muted">
-  Your sovereign Bitcoin-aligned AI agent.  
+  Your sovereign Bitcoin-aligned AI agent.
   Ask about Bitcoin, Satoshium, AI safety, or the future.
   </p>
-
+ 
 <p class="muted">
   Public experimental build — responses reflect current Satoshium knowledge and will evolve.
   </p>
-  
-
-  <div class="agent-wrap">
-
-    <!-- 🔵 PASTE YOUR CHAT IFRAME HERE -->
-    <!-- Example below -->
-
+ 
+ 
+  <!-- TIER 3 — ACCESSIBILITY: aria-label on the agent chat region -->
+  <div class="agent-wrap" aria-label="Satoshium AI chat interface">
+ 
     <iframe
     src="https://www.chatbase.co/chatbot-iframe/T73jUtFjUedWFu5__CoMM"
     width="100%"
-    style="height: 100%; min-height: 700px"
-    frameborder="0"
+    style="height: 100%; min-height: 700px; border:0;"
+    title="Satoshium AI Chat Agent"
+    loading="lazy"
 ></iframe>
-   
+ 
   </div>
-
+ 
             <!-- Footer mission statement + links -->
-     </main>                     
+     </main>
 <div class="wrap reflection">
 <hr />
 <div id="random-saying" class="muted" style="margin-bottom:14px; max-width:760px;">
   Satoshium is being built slowly, in public, and with architectural discipline.
 </div>
 <hr />
-
+ 
 <div id="footer-container"></div>
-
+<!-- TIER 3 — HTML FIX: added missing </div> to close reflection wrapper -->
+</div>
+ 
 <script src="https://satoshium.link/assets/sayings.js"></script>
 <script>
 fetch("https://satoshium.link/components/footer.html")
