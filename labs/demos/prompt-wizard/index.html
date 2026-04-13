@@ -7,9 +7,35 @@
   <link rel="alternate icon" href="https://satoshium.xyz/assets/favicon.ico">
   <link rel="apple-touch-icon" href="https://satoshium.xyz/assets/apple-touch-icon.png">
   <meta name="theme-color" content="#9b6cff">
-
+ 
   <title>Prompt Wizard | Satoshium Labs</title>
   <meta name="description" content="Prompt Wizard helps visitors structure better AI prompts using a clean, guided Satoshium Labs interface." />
+ 
+  <!-- TIER 3 — SEO: Open Graph -->
+  <meta property="og:title" content="Prompt Wizard | Satoshium Labs">
+  <meta property="og:description" content="Turn rough ideas into clearer, stronger prompts using a structured Satoshium Labs workflow.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://satoshium.xyz/labs/demos/prompt-wizard/">
+  <meta property="og:image" content="https://satoshium.ai/assets/og-prompt-wizard.png">
+  <meta property="og:site_name" content="Satoshium Labs">
+  <meta property="og:locale" content="en_US">
+ 
+  <!-- TIER 3 — SEO: Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Prompt Wizard | Satoshium Labs">
+  <meta name="twitter:description" content="Turn rough ideas into clearer, stronger prompts using a structured Satoshium Labs workflow.">
+  <meta name="twitter:image" content="https://satoshium.ai/assets/og-prompt-wizard.png">
+  <meta name="twitter:site" content="@SatoshiumAI">
+ 
+  <!-- TIER 3 — SEO: canonical URL -->
+  <link rel="canonical" href="https://satoshium.xyz/labs/demos/prompt-wizard/">
+ 
+  <!-- TIER 3 — PERFORMANCE: preconnect + dns-prefetch for external origins -->
+  <link rel="preconnect" href="https://satoshium.link" crossorigin>
+  <link rel="dns-prefetch" href="https://satoshium.link">
+  <link rel="dns-prefetch" href="https://satoshiumai.github.io">
+  <link rel="dns-prefetch" href="https://satoshium.xyz">
+ 
   <style>
     :root {
       --bg: #08090d;
@@ -19,33 +45,44 @@
       --muted: #6b7280;
       --gold: #d4a017;
     }
-
+ 
 html,body{
 margin:0;
 padding:0;
 background:var(--bg);
 color:var(--text);
 font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
-line-height:1.55
+line-height:1.55;
+/* TIER 3 — UX: smooth scroll for in-page anchors */
+scroll-behavior:smooth;
 }
 body{
  padding-top:80px;
 }
-    
+ 
     * {
       box-sizing: border-box;
     }
-
+ 
+    a{color:var(--gold);text-decoration:none}
+    a:hover{opacity:.85}
+ 
+    /* TIER 3 — ACCESSIBILITY: visible keyboard focus ring */
+    :focus-visible{
+      outline:2px solid var(--gold);
+      outline-offset:3px;
+    }
+ 
     .wrap {
       max-width: 1280px;
       margin: 0 auto;
       padding: 32px 20px 48px;
     }
-
+ 
     .hero {
       margin-bottom: 20px;
     }
-
+ 
     .eyebrow {
       color: var(--gold);
       font-size: 12px;
@@ -53,33 +90,34 @@ body{
       text-transform: uppercase;
       margin-bottom: 10px;
     }
-
+ 
     h1 {
       margin: 0 0 10px;
       font-size: 2rem;
       line-height: 1.15;
     }
-
+ 
     .subtext {
       color: var(--muted);
       max-width: 760px;
       line-height: 1.6;
       margin-bottom: 18px;
     }
-
+ 
     .meta {
       color: var(--muted);
       font-size: 0.95rem;
       margin-bottom: 28px;
     }
-
+ 
+    /* ===== Frame card — consolidated from three duplicate declarations ===== */
     .frame-card {
       background: var(--panel);
       border: 1px solid var(--border);
       border-radius: 12px;
       overflow: hidden;
     }
-
+ 
     .frame-top {
       display: flex;
       justify-content: space-between;
@@ -88,42 +126,31 @@ body{
       border-bottom: 1px solid var(--border);
       background: rgba(255,255,255,0.01);
     }
-
+ 
     .frame-title {
       font-size: 0.95rem;
       font-weight: 600;
       color: var(--text);
     }
-
+ 
     .frame-note {
       font-size: 0.85rem;
       color: var(--muted);
     }
-
+ 
 .app-frame {
   width: 100%;
   border: 0;
   display: block;
   background: #000;
-
-  height: calc(100vh + 300px); /* more flexible than 130vh */
+  height: calc(100vh + 300px);
   overflow: hidden;
 }
-
+ 
 .app-frame::-webkit-scrollbar {
   display: none;
 }
-    
-  /* OPTIONAL: remove extra page scroll spacing */
-  .frame-card {
-    overflow: hidden;
-  }
-
-  /* OPTIONAL: remove extra page scroll spacing */
-  .frame-card {
-    overflow: hidden;
-  }
-
+ 
     .notes {
       margin-top: 22px;
       padding: 18px 20px;
@@ -131,65 +158,93 @@ body{
       border: 1px solid var(--border);
       border-radius: 12px;
     }
-
+ 
     .notes h2 {
       margin: 0 0 10px;
       font-size: 1rem;
       color: var(--gold);
     }
-
+ 
     .notes p {
       margin: 0;
       color: var(--muted);
       line-height: 1.65;
     }
-
+ 
     @media (max-width: 900px) {
       .app-frame {
         height: 1100px;
       }
-
+ 
       h1 {
         font-size: 1.6rem;
       }
-
+ 
       .frame-top {
         flex-direction: column;
         align-items: flex-start;
         gap: 6px;
       }
     }
-
-/* ===== Pills ===== */
-
+ 
+/* ===== Pills — fixed variable references ===== */
+ 
 .pill{
 display:inline-flex;
 align-items:center;
 gap:8px;
 padding:8px 10px;
-border:1px solid var(--line);
+/* TIER 3 — CSS FIX: was var(--line) which is undefined; corrected to var(--border) */
+border:1px solid var(--border);
 border-radius:999px;
-background:rgba(214,163,74,.08);
-color:var(--gold2);
+background:rgba(212,160,23,.08);
+/* TIER 3 — CSS FIX: was var(--gold2) which is undefined; corrected to var(--gold) */
+color:var(--gold);
 font-size:12px;
 font-weight:700
 }
-
+ 
 ul{
 margin:8px 0 0 18px
 }
-    
+ 
+/* TIER 3 — CSS FIX: added missing .muted rule (used on random-saying) */
+.muted{
+  color:var(--muted);
+}
+ 
+/* TIER 3 — CSS FIX: added missing .reflection and hr rules */
+.reflection{
+  margin-top:40px;
+  margin-bottom:40px;
+}
+ 
+hr{
+  border:none;
+  border-top:1px solid var(--border);
+  margin:22px 0;
+}
+ 
+/* TIER 3 — ACCESSIBILITY: reduced-motion guard */
+@media (prefers-reduced-motion:reduce){
+  html,body{
+    scroll-behavior:auto;
+  }
+}
+ 
   </style>
 </head>
 <body>
-
+ 
 <div id="topbar-slot" data-topbar="platform"></div>
 <script src="/components/topbar-loader.js"></script>
-
-  <main class="wrap">
-    <section class="hero">
-      <div class="pill">🧙 Satoshium Labs Demo</div>
-      <h2 style="margin-top:12px;">Prompt Wizard</h2>
+ 
+  <!-- TIER 3 — ACCESSIBILITY: id="main-content" for landmark targeting -->
+  <main id="main-content" class="wrap">
+    <!-- TIER 3 — ACCESSIBILITY: aria-labelledby on sections -->
+    <section class="hero" aria-labelledby="heading-wizard">
+      <span class="pill" aria-label="Satoshium Labs Demo">🧙 Satoshium Labs Demo</span>
+      <h1 id="heading-wizard" style="margin-top:12px;">Prompt Wizard</h1>
       <div class="subtext">
         Prompt Wizard helps visitors turn rough ideas into clearer, stronger prompts using a structured Satoshium Labs workflow.
       </div>
@@ -197,13 +252,13 @@ margin:8px 0 0 18px
         Browser-based • Static build • Guided prompt design
       </div>
     </section>
-
-    <section class="frame-card">
+ 
+    <section class="frame-card" aria-labelledby="heading-demo">
       <div class="frame-top">
-        <div class="frame-title">Live Demo</div>
+        <div class="frame-title" id="heading-demo">Live Demo</div>
         <div class="frame-note">Live browser-based demo</div>
       </div>
-
+ 
       <iframe
         class="app-frame"
         src="https://satoshiumai.github.io/satoshium-labs/demos/prompt-wizard/"
@@ -211,24 +266,26 @@ margin:8px 0 0 18px
         loading="lazy"
       ></iframe>
     </section>
-
-    <section class="notes">
-      <h2>What this demo does</h2>
+ 
+    <section class="notes" aria-labelledby="heading-notes">
+      <h2 id="heading-notes">What this demo does</h2>
       <p>
         This tool helps structure better AI prompts by guiding the user through goal, tone, output format, constraints, and background context. It is designed as a browser-based Satoshium Labs demo and can be expanded over time.
       </p>
     </section>
   </main>
-
+ 
  <div class="wrap reflection">
 <hr />
 <div id="random-saying" class="muted" style="margin-bottom:14px; max-width:760px;">
   Satoshium is being built slowly, in public, and with architectural discipline.
 </div>
 <hr />
-
+ 
 <div id="footer-container"></div>
-
+<!-- TIER 3 — HTML FIX: added missing </div> to close reflection wrapper -->
+</div>
+ 
 <script src="https://satoshium.link/assets/sayings.js"></script>
 <script>
 fetch("https://satoshium.link/components/footer.html")
