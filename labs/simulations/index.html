@@ -7,8 +7,35 @@
 <link rel="alternate icon" href="https://satoshium.xyz/assets/favicon.ico">
 <link rel="apple-touch-icon" href="https://satoshium.xyz/assets/apple-touch-icon.png">
 <meta name="theme-color" content="#9b6cff">
-
+ 
 <title>Satoshium Labs — Simulations</title>
+ 
+<!-- TIER 3 — SEO: meta description -->
+<meta name="description" content="Satoshium simulations — interactive system environments exploring trust, resilience, coordination, and future-world infrastructure design. Play directly in the browser.">
+ 
+<!-- TIER 3 — SEO: Open Graph -->
+<meta property="og:title" content="Satoshium Labs — Simulations">
+<meta property="og:description" content="Interactive system environments exploring trust, resilience, coordination, and future-world infrastructure design from Satoshium Labs.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://satoshium.xyz/labs/simulations/">
+<meta property="og:image" content="https://satoshium.ai/assets/og-simulations.png">
+<meta property="og:site_name" content="Satoshium Labs">
+<meta property="og:locale" content="en_US">
+ 
+<!-- TIER 3 — SEO: Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Satoshium Labs — Simulations">
+<meta name="twitter:description" content="Interactive system environments exploring trust, resilience, coordination, and future-world infrastructure design.">
+<meta name="twitter:image" content="https://satoshium.ai/assets/og-simulations.png">
+<meta name="twitter:site" content="@SatoshiumAI">
+ 
+<!-- TIER 3 — SEO: canonical URL -->
+<link rel="canonical" href="https://satoshium.xyz/labs/simulations/">
+ 
+<!-- TIER 3 — PERFORMANCE: preconnect + dns-prefetch -->
+<link rel="preconnect" href="https://satoshium.link" crossorigin>
+<link rel="dns-prefetch" href="https://satoshium.link">
+ 
 <style>
 :root{
   --card-wm: url('https://satoshium.link/assets/seal.png');
@@ -26,8 +53,21 @@ html,body{
   background:var(--bg);
   color:var(--text);
   font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+  line-height:1.55;
+  /* TIER 3 — UX: smooth scroll for in-page anchors */
+  scroll-behavior:smooth;
 }
 body{padding-top:80px}
+ 
+a{color:var(--gold2);text-decoration:none}
+a:hover{color:var(--gold)}
+ 
+/* TIER 3 — ACCESSIBILITY: visible keyboard focus ring */
+:focus-visible{
+  outline:2px solid var(--gold2);
+  outline-offset:3px;
+}
+ 
 .wrap{max-width:1100px;margin:0 auto;padding:0 18px}
 .wrap.content{
   opacity:0;
@@ -94,29 +134,53 @@ h2{font-size:20px;color:var(--gold2);margin:0 0 10px}
   filter:blur(1px);
   pointer-events:none;
 }
+.card > *{position:relative;z-index:1}
 .card p{color:var(--muted);margin:0 0 12px}
 .card .pill{margin-top:8px}
 .hero-note{margin-top:18px;max-width:860px;line-height:1.65}
 .reflection{margin:40px auto 0;color:var(--muted)}
 hr{border:none;border-top:1px solid rgba(214,163,74,.18);margin:16px 0}
+ 
+/* TIER 3 — ACCESSIBILITY: reduced-motion guard */
+@media (prefers-reduced-motion:reduce){
+  html,body{
+    scroll-behavior:auto;
+  }
+ 
+  .wrap.content{
+    animation:none;
+    opacity:1;
+    transform:none;
+  }
+ 
+  .card{
+    transition:none;
+  }
+ 
+  .card:hover{
+    transform:none;
+  }
+}
 </style>
 </head>
 <body id="top">
 <div id="topbar-slot" data-topbar="platform"></div>
 <script src="/components/topbar-loader.js"></script>
-
-<main class="wrap content">
+ 
+<!-- TIER 3 — ACCESSIBILITY: id="main-content" for landmark targeting -->
+<main id="main-content" class="wrap content">
   <div class="pill">Satoshium Labs</div>
   <h1>Simulations</h1>
-
+ 
   <p class="muted hero-note">
     Satoshium simulations are interactive system environments used to explore trust, resilience,
     coordination, escalation, recovery, and future-world infrastructure design. These modules turn
     Satoshium ideas into playable or observable systems that can be tested directly in the browser.
   </p>
-
-  <section class="section-card" style="--card-wm:url('https://satoshium.link/assets/seal.png');">
-    <h2>Featured Simulation</h2>
+ 
+  <!-- TIER 3 — ACCESSIBILITY: aria-labelledby on section cards -->
+  <section class="section-card" style="--card-wm:url('https://satoshium.link/assets/seal.png');" aria-labelledby="heading-featured">
+    <h2 id="heading-featured">Featured Simulation</h2>
     <div class="grid">
       <div class="card" style="--card-wm:url('https://satoshium.link/assets/seal.png');">
         <h2>Sovereign Signal <span class="pill" style="margin-bottom:8px;">Phase 1B</span></h2>
@@ -132,11 +196,12 @@ hr{border:none;border-top:1px solid rgba(214,163,74,.18);margin:16px 0}
       </div>
     </div>
   </section>
-
-  <section>
+ 
+  <section aria-labelledby="heading-explore">
+    <h2 id="heading-explore" class="sr-only">Simulation Details</h2>
     <div class="grid">
-      <div class="card" style="--card-wm:url('https://satoshium.link/assets/seal.png');">
-        <h2>What Simulations Explore</h2>
+      <div class="card" style="--card-wm:url('https://satoshium.link/assets/seal.png');" aria-labelledby="heading-what">
+        <h2 id="heading-what">What Simulations Explore</h2>
         <p>
           Simulations allow Satoshium to test ideas dynamically rather than only explain them through
           essays or architecture pages.
@@ -146,9 +211,9 @@ hr{border:none;border-top:1px solid rgba(214,163,74,.18);margin:16px 0}
           coordination, infrastructure stress, and future institutional design.
         </p>
       </div>
-
-      <div class="card" style="--card-wm:url('https://satoshium.link/assets/seal.png');">
-        <h2>Current State</h2>
+ 
+      <div class="card" style="--card-wm:url('https://satoshium.link/assets/seal.png');" aria-labelledby="heading-state">
+        <h2 id="heading-state">Current State</h2>
         <p>
           This section is still in active buildout. Sovereign Signal is the first major live simulation
           currently available inside Satoshium Labs.
@@ -157,9 +222,9 @@ hr{border:none;border-top:1px solid rgba(214,163,74,.18);margin:16px 0}
           Additional simulations may be added over time as the Labs layer continues to mature.
         </p>
       </div>
-
-      <div class="card" style="--card-wm:url('https://satoshium.link/assets/seal.png');">
-        <h2>Return to Labs</h2>
+ 
+      <div class="card" style="--card-wm:url('https://satoshium.link/assets/seal.png');" aria-labelledby="heading-return">
+        <h2 id="heading-return">Return to Labs</h2>
         <p>
           View the broader Labs layer, including tools, demos, experiments, and knowledge systems.
         </p>
@@ -168,7 +233,7 @@ hr{border:none;border-top:1px solid rgba(214,163,74,.18);margin:16px 0}
     </div>
   </section>
 </main>
-
+ 
 <div class="wrap reflection">
   <hr>
   <div id="random-saying" class="muted" style="margin-bottom:14px; max-width:760px;">
@@ -177,7 +242,7 @@ hr{border:none;border-top:1px solid rgba(214,163,74,.18);margin:16px 0}
   <hr>
   <div id="footer-container"></div>
 </div>
-
+ 
 <script src="https://satoshium.link/assets/sayings.js"></script>
 <script>
 fetch("https://satoshium.link/components/footer.html")
