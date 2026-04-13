@@ -7,9 +7,37 @@
   <link rel="alternate icon" href="https://satoshium.xyz/assets/favicon.ico">
   <link rel="apple-touch-icon" href="https://satoshium.xyz/assets/apple-touch-icon.png">
   <meta name="theme-color" content="#9b6cff">
-
+ 
   <title>Satoshium Research — Papers, Essays, and Architecture Notes</title>
-
+ 
+  <!-- TIER 3 — SEO: meta description -->
+  <meta name="description" content="Satoshium Research — long-form essays, architecture papers, and research notes on decentralized intelligence, verification systems, governance design, and Bitcoin-aligned AI infrastructure.">
+ 
+  <!-- TIER 3 — SEO: Open Graph -->
+  <meta property="og:title" content="Satoshium Research — Papers, Essays, and Architecture Notes">
+  <meta property="og:description" content="Long-form essays, architecture papers, and research notes on decentralized intelligence, verification, and Bitcoin-aligned AI infrastructure.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://satoshium.xyz/labs/research/">
+  <meta property="og:image" content="https://satoshium.ai/assets/og-research.png">
+  <meta property="og:site_name" content="Satoshium">
+  <meta property="og:locale" content="en_US">
+ 
+  <!-- TIER 3 — SEO: Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Satoshium Research — Papers, Essays, and Architecture Notes">
+  <meta name="twitter:description" content="Long-form essays, architecture papers, and research notes on decentralized intelligence, verification, and Bitcoin-aligned AI infrastructure.">
+  <meta name="twitter:image" content="https://satoshium.ai/assets/og-research.png">
+  <meta name="twitter:site" content="@SatoshiumAI">
+ 
+  <!-- TIER 3 — SEO: canonical URL -->
+  <link rel="canonical" href="https://satoshium.xyz/labs/research/">
+ 
+  <!-- TIER 3 — PERFORMANCE: preconnect + dns-prefetch for external origins -->
+  <link rel="preconnect" href="https://satoshium.link" crossorigin>
+  <link rel="dns-prefetch" href="https://satoshium.link">
+  <link rel="dns-prefetch" href="https://satoshium.net">
+  <link rel="dns-prefetch" href="https://satoshium.ai">
+ 
   <style>
     :root{
       --card-wm: url('https://satoshium.link/assets/seal.png');
@@ -21,7 +49,7 @@
       --gold2:#f4c36a;
       --line:rgba(214,163,74,.18);
     }
-
+ 
     *{box-sizing:border-box}
     html,body{
       margin:0;
@@ -30,6 +58,8 @@
       color:var(--text);
       font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
       line-height:1.55;
+      /* TIER 3 — UX: smooth scroll for in-page anchors */
+      scroll-behavior:smooth;
     }
 body{
  padding-top:80px;
@@ -44,11 +74,18 @@ body{
   grid-template-columns:1fr 1fr;
   gap:16px
 }
-
+ 
     a{color:var(--gold2);text-decoration:none}
     a:hover{color:var(--gold)}
+ 
+    /* TIER 3 — ACCESSIBILITY: visible keyboard focus ring */
+    :focus-visible{
+      outline:2px solid var(--gold2);
+      outline-offset:3px;
+    }
+ 
     .wrap{max-width:1080px;margin:0 auto;padding:0 18px}
-
+ 
     .topbar{
       position:sticky;top:0;z-index:20;
       background:rgba(7,9,13,.92);
@@ -59,7 +96,7 @@ body{
       display:flex;align-items:center;justify-content:space-between;
       padding:14px 18px;
     }
-
+ 
     .brand{display:flex;align-items:center;gap:12px}
     .mark{
       width:42px;height:42px;border-radius:14px;display:grid;place-items:center;
@@ -68,42 +105,44 @@ body{
     }
     .name{letter-spacing:.16em;font-weight:800;font-size:12px;color:var(--gold2)}
     .tag{font-size:12px;color:var(--muted);margin-top:2px}
-
+ 
     .nav{display:flex;gap:16px;align-items:center;flex-wrap:wrap}
     .nav a{color:var(--muted);font-size:13px}
     .nav a:hover{color:var(--gold2)}
-
+ 
     .content{padding:34px 18px 60px}
-
+ 
     .wrap.content{
   opacity:0;
   transform:translateY(6px);
   animation:pageEnter .28s cubic-bezier(.22,.61,.36,1) forwards;
 }
-
+ 
 @keyframes pageEnter{
  to{
  opacity:1;
  transform:translateY(0);
  }
 }
-
+ 
     h1,h2,h3{margin:0 0 10px}
     h1{font-size:32px;color:var(--gold2)}
     h2{font-size:21px;color:var(--gold2)}
     h3{font-size:18px;color:#fff}
     p,li{color:var(--text)}
     hr{border:none;border-top:1px solid var(--line);margin:24px 0}
-
+ 
     .pill,.badge{
       display:inline-flex;align-items:center;gap:8px;
       padding:8px 10px;border:1px solid var(--line);border-radius:999px;
       background:rgba(214,163,74,.08);color:var(--gold2);font-size:12px;font-weight:700
     }
-
+ 
     .muted{color:var(--muted)}
     .mini{font-size:12px}
-
+ 
+    /* ===== Cards — consolidated from three declarations ===== */
+ 
     .card{
       position:relative;
       overflow:hidden;
@@ -112,15 +151,17 @@ body{
         rgba(12,16,24,.94),
         rgba(12,16,24,.88)
       );
-      border:1px solid var(--line);
+      /* TIER 3 — CSS FIX: merged duplicate border (was var(--line) then overridden to .15) */
+      border:1px solid rgba(214,163,74,.15);
       border-radius:16px;
       padding:18px;
       margin:16px 0;
       box-shadow:
         0 0 0 1px rgba(214,163,74,.08),
         0 20px 50px rgba(0,0,0,.45);
+      transition: transform .18s ease, box-shadow .18s ease;
     }
-
+ 
     .card::before{
       content:"";
       position:absolute;
@@ -134,28 +175,21 @@ body{
       pointer-events:none;
       z-index:0;
     }
-
+ 
     .card > *{position:relative;z-index:1}
-.card {
-  transition: transform .18s ease, box-shadow .18s ease;
-}
-
-.card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 10px 25px rgba(0,0,0,.35);
-}
-
-.card {
- border: 1px solid rgba(214,163,74,.15);
-}
-
+ 
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px rgba(0,0,0,.35);
+    }
+ 
     .grid{
       display:grid;
       grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
       gap:16px;
       margin-top:14px;
     }
-
+ 
     .module{
       position:relative;
       overflow:hidden;
@@ -171,7 +205,7 @@ body{
         0 0 0 1px rgba(214,163,74,.06),
         0 10px 28px rgba(0,0,0,.22);
     }
-
+ 
     .module::before{
       content:"";
       position:absolute;
@@ -185,9 +219,9 @@ body{
       pointer-events:none;
       z-index:0;
     }
-
+ 
     .module > *{position:relative;z-index:1}
-
+ 
     .module-top{
       display:flex;
       align-items:flex-start;
@@ -195,7 +229,7 @@ body{
       gap:10px;
       margin-bottom:8px;
     }
-
+ 
     .tagpill{
       display:inline-flex;
       align-items:center;
@@ -208,7 +242,7 @@ body{
       font-size:12px;
       white-space:nowrap;
     }
-
+ 
     .actions{
       display:flex;
       align-items:center;
@@ -217,7 +251,7 @@ body{
       margin-top:12px;
       flex-wrap:wrap;
     }
-
+ 
     .btn{
       display:inline-flex;
       align-items:center;
@@ -230,43 +264,71 @@ body{
       font-size:13px;
       font-weight:700;
       text-decoration:none;
+      transition:background .15s ease;
     }
-
+ 
     .btn:hover{
       background:rgba(214,163,74,.14);
       color:var(--gold);
     }
-
+ 
     .footer{
       border-top:1px solid var(--line);
       padding:18px 0 32px;
       color:var(--muted);
       margin-top:28px;
     }
-
+ 
+    /* TIER 3 — ACCESSIBILITY: reduced-motion guard */
+    @media (prefers-reduced-motion:reduce){
+      html,body{
+        scroll-behavior:auto;
+      }
+ 
+      .wrap.content{
+        animation:none;
+        opacity:1;
+        transform:none;
+      }
+ 
+      .card{
+        transition:none;
+      }
+ 
+      .card:hover{
+        transform:none;
+      }
+ 
+      .btn{
+        transition:none;
+      }
+    }
+ 
     @media(max-width:760px){
       .topbar .wrap{align-items:flex-start;flex-direction:column;gap:12px}
       .nav{gap:12px}
     }
   </style>
 </head>
-
-<body>
+ 
+<body id="top">
 <div id="topbar-slot" data-topbar="platform"></div>
 <script src="/components/topbar-loader.js"></script>
-
-  <main class="wrap content">
-
+ 
+  <!-- TIER 3 — ACCESSIBILITY: id="main-content" for landmark targeting -->
+  <main id="main-content" class="wrap content">
+ 
     <div class="pill">📘 Research & Papers</div>
-
+ 
     <h1 style="margin-top:12px;">Satoshium Research</h1>
     <p class="muted" style="max-width:860px;">
       This section collects long-form essays, research notes, architecture papers, and future whitepapers
       related to decentralized intelligence, verification systems, governance design, and Bitcoin-aligned AI infrastructure.
     </p>
-
-    <div class="card" style="--card-wm:url('https://satoshium.link/assets/seal.png');">
-      <h2 style="margin-top:0;">Why this section exists</h2>
+ 
+    <!-- TIER 3 — ACCESSIBILITY: aria-labelledby on section cards -->
+    <div class="card" style="--card-wm:url('https://satoshium.link/assets/seal.png');" aria-labelledby="heading-why">
+      <h2 id="heading-why" style="margin-top:0;">Why this section exists</h2>
       <p>
         Satoshium is being built as a long-term intelligence platform. Research matters because durable systems
         require more than code — they require clear concepts, architectural reasoning, and documented thinking.
@@ -276,13 +338,13 @@ body{
         canonical essays, and supporting technical notes.
       </p>
     </div>
-
-    <div class="card" style="--card-wm:url('https://satoshium.link/assets/seal.png');">
+ 
+    <div class="card" style="--card-wm:url('https://satoshium.link/assets/seal.png');" aria-labelledby="heading-tracks">
       <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;">
-        <h2 style="margin-top:0;">Current Research Tracks</h2>
+        <h2 id="heading-tracks" style="margin-top:0;">Current Research Tracks</h2>
         <span class="badge">🧭 Building in Public</span>
       </div>
-
+ 
       <div class="grid">
         <section class="module">
           <div class="module-top">
@@ -297,7 +359,7 @@ body{
             <span class="mini muted">Essays / concept papers</span>
           </div>
         </section>
-
+ 
         <section class="module">
           <div class="module-top">
             <h3>Knowledge Engine</h3>
@@ -311,7 +373,7 @@ body{
             <span class="mini muted">Glossary / ontology / canon</span>
           </div>
         </section>
-
+ 
         <section class="module">
           <div class="module-top">
             <h3>Trust & Verification</h3>
@@ -325,7 +387,7 @@ body{
             <span class="mini muted">Verification models</span>
           </div>
         </section>
-
+ 
         <section class="module">
           <div class="module-top">
             <h3>Simulation & Scenario Design</h3>
@@ -339,7 +401,7 @@ body{
             <span class="mini muted">Labs / scenario systems</span>
           </div>
         </section>
-
+ 
         <section class="module">
           <div class="module-top">
             <h3>Bitcoin + AI</h3>
@@ -353,7 +415,7 @@ body{
             <span class="mini muted">Education / essays</span>
           </div>
         </section>
-
+ 
         <section class="module">
           <div class="module-top">
             <h3>Agent Safety & Constraints</h3>
@@ -369,9 +431,9 @@ body{
         </section>
       </div>
     </div>
-
-    <div class="card" style="--card-wm:url('https://satoshium.link/assets/seal.png');">
-      <h2 style="margin-top:0;">Initial Contents</h2>
+ 
+    <div class="card" style="--card-wm:url('https://satoshium.link/assets/seal.png');" aria-labelledby="heading-contents">
+      <h2 id="heading-contents" style="margin-top:0;">Initial Contents</h2>
       <p class="muted">
         The following content types are expected to appear here over time:
       </p>
@@ -383,9 +445,9 @@ body{
         <li><strong>Technical explainers</strong> — plain-English breakdowns of complex concepts</li>
       </ul>
     </div>
-
-    <div class="card" style="--card-wm:url('https://satoshium.link/assets/seal.png');">
-      <h2 style="margin-top:0;">Current Status</h2>
+ 
+    <div class="card" style="--card-wm:url('https://satoshium.link/assets/seal.png');" aria-labelledby="heading-status">
+      <h2 id="heading-status" style="margin-top:0;">Current Status</h2>
       <p>
         This section is now live as a structured placeholder and will expand gradually as Satoshium research materials are published.
       </p>
@@ -393,37 +455,35 @@ body{
         No hype. No paper dump. Only materials that improve clarity, architecture, and long-term platform coherence.
       </p>
     </div>
-
-    <div class="card" style="--card-wm:url('https://satoshium.link/assets/seal.png');">
-      <h2 style="margin-top:0;">Relationship to the Platform</h2>
+ 
+    <div class="card" style="--card-wm:url('https://satoshium.link/assets/seal.png');" aria-labelledby="heading-relationship">
+      <h2 id="heading-relationship" style="margin-top:0;">Relationship to the Platform</h2>
       <p>
         Research supports the rest of the ecosystem. Over time, this section will inform and strengthen:
       </p>
       <ul>
-        <li><a href="https://satoshium.net/systems/">Satoshium Systems</a></li>
-        <li><a href="https://satoshium.net/services/">Satoshium Services</a></li>
-        <li><a href="https://satoshium.xyz/labs/">Satoshium Labs</a></li>
-        <li><a href="https://satoshium.link/repos/">Repo Map</a></li>
-        <li><a href="https://satoshium.ai/updates/">Public Updates</a></li>
+        <li><a href="https://satoshium.net/systems/" target="_blank" rel="noopener noreferrer">Satoshium Systems</a></li>
+        <li><a href="https://satoshium.net/services/" target="_blank" rel="noopener noreferrer">Satoshium Services</a></li>
+        <li><a href="https://satoshium.xyz/labs/" target="_blank" rel="noopener noreferrer">Satoshium Labs</a></li>
+        <li><a href="https://satoshium.link/repos/" target="_blank" rel="noopener noreferrer">Repo Map</a></li>
+        <li><a href="https://satoshium.ai/updates/" target="_blank" rel="noopener noreferrer">Public Updates</a></li>
       </ul>
     </div>
-</div>
-    
+ 
 </main>
-             <!-- Footer mission statement + links -->
- <div class="wrap reflection">
-
-<hr>
-
-<p>
-<div id="random-saying" class="muted">
+ 
+  <!-- Footer mission statement + links -->
+<div class="wrap reflection">
+<hr />
+<div id="random-saying" class="muted" style="margin-bottom:14px; max-width:760px;">
   Satoshium is being built slowly, in public, and with architectural discipline.
-</p>
-
-<hr>
-
 </div>
+<hr />
+ 
 <div id="footer-container"></div>
+<!-- TIER 3 — HTML FIX: added missing closing div for reflection wrapper -->
+</div>
+ 
 <script src="https://satoshium.link/assets/sayings.js"></script>
 <script>
 fetch("https://satoshium.link/components/footer.html")
@@ -433,7 +493,4 @@ fetch("https://satoshium.link/components/footer.html")
  });
 </script>
 </body>
-</html>
-
-
 </html>
