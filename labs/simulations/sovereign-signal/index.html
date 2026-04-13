@@ -7,9 +7,33 @@
   <link rel="alternate icon" href="https://satoshium.xyz/assets/favicon.ico">
   <link rel="apple-touch-icon" href="https://satoshium.xyz/assets/apple-touch-icon.png">
   <meta name="theme-color" content="#9b6cff">
-
+ 
   <title>Sovereign Signal Outpost Alpha · Phase I | Satoshium</title>
   <meta name="description" content="Sovereign Signal - a systems game about resource management and trust dynamics. It is designed for desktop. Visit on a larger screen to play." />
+ 
+  <!-- TIER 3 — SEO: Open Graph -->
+  <meta property="og:title" content="Sovereign Signal Outpost Alpha · Phase I | Satoshium">
+  <meta property="og:description" content="Sovereign Signal — a systems game about resource management and trust dynamics from Satoshium Labs.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://satoshium.xyz/labs/simulations/sovereign-signal/">
+  <meta property="og:image" content="https://satoshium.ai/assets/og-sovereign-signal.png">
+  <meta property="og:site_name" content="Satoshium Labs">
+  <meta property="og:locale" content="en_US">
+ 
+  <!-- TIER 3 — SEO: Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Sovereign Signal Outpost Alpha · Phase I | Satoshium">
+  <meta name="twitter:description" content="Sovereign Signal — a systems game about resource management and trust dynamics from Satoshium Labs.">
+  <meta name="twitter:image" content="https://satoshium.ai/assets/og-sovereign-signal.png">
+  <meta name="twitter:site" content="@SatoshiumAI">
+ 
+  <!-- TIER 3 — SEO: canonical URL -->
+  <link rel="canonical" href="https://satoshium.xyz/labs/simulations/sovereign-signal/">
+ 
+  <!-- TIER 3 — PERFORMANCE: dns-prefetch for iframe source -->
+  <link rel="preconnect" href="https://satoshiumai.github.io" crossorigin>
+  <link rel="dns-prefetch" href="https://satoshiumai.github.io">
+ 
   <style>
     :root{
       --bg:#07090d;
@@ -20,28 +44,36 @@
       --gold2:#f4c36a;
       --line:rgba(214,163,74,.18);
     }
-
+ 
     *{box-sizing:border-box}
-
+ 
     html, body{
       margin:0;
       padding:0;
       background:var(--bg);
       color:var(--text);
       font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      /* TIER 3 — UX: smooth scroll */
+      scroll-behavior:smooth;
     }
-
+ 
     body{
       min-height:100vh;
     }
-
+ 
+    /* TIER 3 — ACCESSIBILITY: visible keyboard focus ring */
+    :focus-visible{
+      outline:2px solid var(--gold2);
+      outline-offset:3px;
+    }
+ 
     .app-shell{
       width:100%;
       max-width:none;
       margin:0;
       padding:0;
     }
-
+ 
     .app-frame{
       width:100%;
       border:0;
@@ -50,20 +82,28 @@
       overflow:hidden;
       height:calc(100vh + 300px);
     }
-
+ 
     @media (max-width: 900px){
       .app-frame{
         height:1400px;
       }
     }
+ 
+    /* TIER 3 — ACCESSIBILITY: reduced-motion guard */
+    @media (prefers-reduced-motion:reduce){
+      html,body{
+        scroll-behavior:auto;
+      }
+    }
   </style>
 </head>
 <body>
-  <main class="app-shell">
+  <!-- TIER 3 — ACCESSIBILITY: id="main-content" for landmark targeting -->
+  <main id="main-content" class="app-shell">
     <iframe
       class="app-frame"
       src="https://satoshiumai.github.io/satoshium-labs/simulations/sovereign-signal/"
-      title="Sovereign Signal Outpost Alpha · Phase I"
+      title="Sovereign Signal Outpost Alpha — Phase I systems game by Satoshium Labs"
       loading="lazy">
     </iframe>
   </main>
