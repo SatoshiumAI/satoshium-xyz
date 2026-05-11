@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link rel="icon" href="https://satoshium.xyz/assets/favicon.svg">
+<meta name="theme-color" content="#9b6cff">
+
+<title>Satoshium Labs — Glossary Hub</title>
+
+<style>
+:root{
+  --bg:#07090d;
+  --panel:#0c1018;
+  --text:#e8edf7;
+  --muted:#9aa7bd;
+  --gold:#d6a34a;
+  --gold2:#f4c36a;
+  --line:rgba(214,163,74,.18);
+}
+body{
+  margin:0;
+  padding:0;
+  background:var(--bg);
+  color:var(--text);
+  font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+}
+.wrap{max-width:900px;margin:0 auto;padding:100px 20px 60px}
+h1{color:var(--gold2)}
+.card{
+  margin-top:30px;
+  background:rgba(12,16,24,.9);
+  border:1px solid var(--line);
+  border-radius:16px;
+  padding:24px;
+}
+.pill{
+  display:inline-block;
+  padding:6px 10px;
+  border-radius:999px;
+  border:1px solid var(--line);
+  background:rgba(214,163,74,.1);
+  color:var(--gold2);
+  font-size:12px;
+  margin-bottom:10px;
+}
+a.button{
+  display:inline-block;
+  margin-top:14px;
+  padding:10px 14px;
+  border-radius:10px;
+  background:rgba(214,163,74,.15);
+  border:1px solid var(--line);
+  color:var(--gold2);
+  text-decoration:none;
+}
+a.button:hover{
+  background:rgba(214,163,74,.25);
+}
+</style>
+</head>
+
+<body>
+
+<div id="topbar-slot"></div>
+<script src="/components/topbar-loader.js"></script>
+
+<main class="wrap">
+
+<div class="pill">Knowledge System</div>
+<h1>Glossary Hub</h1>
+
+<p style="color:var(--muted);max-width:700px;">
+The Glossary Hub is the canonical terminology interface for the Satoshium ecosystem.
+It defines the vocabulary used across governance systems, intelligence frameworks,
+verification layers, and decentralized coordination models.
+</p>
+
+<div class="card">
+  <h2>System Status</h2>
+  <p style="color:var(--muted);">
+    The Glossary Hub is currently being upgraded into a structured, interactive
+    knowledge system aligned with the Satoshium platform architecture.
+  </p>
+
+  <div class="pill">In Development</div>
+</div>
+
+<div class="card">
+  <h2>Current Interface</h2>
+  <p style="color:var(--muted);">
+    The current glossary interface exists as a live documentation surface.
+    You can explore the foundational terminology structure below.
+  </p>
+
+  <a href="https://satoshiumai.github.io/satoshium-labs/knowledge/glossary/"
+     target="_blank"
+     class="button">
+     Open Glossary Interface →
+  </a>
+</div>
+
+<div class="card">
+  <h2>What’s Coming</h2>
+  <ul style="color:var(--muted);">
+    <li>Structured glossary entries</li>
+    <li>Searchable terminology system</li>
+    <li>Cross-system concept mapping</li>
+    <li>Canonical vocabulary registry</li>
+    <li>Agent-readable semantic layer</li>
+  </ul>
+</div>
+
+</main>
+
+<div id="footer-container"></div>
+<script>
+fetch("https://satoshium.link/components/footer.html")
+  .then(res => res.text())
+  .then(data => document.getElementById("footer-container").innerHTML = data);
+</script>
+
+</body>
+</html>
